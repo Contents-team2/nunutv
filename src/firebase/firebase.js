@@ -1,9 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from "firebase/database";
-// Follow this pattern to import other Firebase services
-// import { } from 'firebase/<service>';
+import { getStorage } from "firebase/storage";
 
-// TODO: Replace the following with your app's Firebase project configuration
+
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -15,7 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig, 'myfirebaseapp');
 
-// Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app, "https://nunutv-c9b2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
+const storage = getStorage(app);
 
-export { database }
+export { database, storage }
