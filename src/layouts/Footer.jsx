@@ -81,7 +81,7 @@ const Footer = () => {
               <div class='copy-text-block'>대표: 하진수</div>
               <div class='copy-text-block'>이메일 주소: supercoding@nunutv.collaborate</div>
               <div class='copy-text-block'>
-                주소: 화성 타스시스 도지특별시 슈퍼구 코딩국로 99, 올림푸스몬스 Z동 990층 우편번호 03999
+                주소: 화성 타르시스 도지특별시 슈퍼구 코딩국로 99, 올림푸스몬스 Z동 990층 우편번호 03999
               </div>
               <div class='copy-text-block'>사업자등록번호: 199-99-00999</div>
               <div class='copy-text-block'>클라우드 호스팅: Godmazon Web Services Inc.</div>
