@@ -1,17 +1,10 @@
-import React from "react";
-import { database } from "../firebase/firebase";
-import { ref, set } from "firebase/database";
+import { getRdbRequest } from "../utils/firebase.api";
 
 const FirebaseTest = () => {
-  const db = database;
-  console.log(db);
-  const setUser = () => {
-    set(ref(db, "users/2"), {
-      username: "name",
-      email: "name@email.com",
-    });
-  };
-  setUser();
+  const url = `users`;
+  const d = getRdbRequest(url);
+
+  console.log(typeof d, d);
   return (
     <>
       <div>FirebaseTest</div>

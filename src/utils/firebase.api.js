@@ -1,14 +1,33 @@
-//get firebase rdb
+import { database } from "../firebase/firebase";
+import { child, get, ref, set } from "@firebase/database";
 
-import axios from "axios"
+const db = database
+// const strg = storage
 
-const useGetRequest = (url, config) => {
-
-    axios.get(url, config)
+/**
+ * Get JSON data from firebase Realtime Database
+ * 
+ * @param {String} url 
+ * @returns {object} data
+ */
+const getRdbRequest = (url) => {
+    get(child(ref(db), url)).then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log(snapshot.val())
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
 }
-const usePostRequest = () => { }
-const usePutRequest = () => { }
-const usePatchRequest = () => { }
-const useDeleteRequest = () => { }
 
-export { useGetRequest, usePostRequest, usePatchRequest, usePutRequest, useDeleteRequest }
+const postRdbRequest = (url, data) => {
+    set(ref(db, url), data);
+}
+
+const patchRdbRequest = () => { }
+const putRdbRequest = () => { }
+const deleteRdbRequest = () => { }
+
+export { getRdbRequest, postRdbRequest, patchRdbRequest, putRdbRequest, deleteRdbRequest }
