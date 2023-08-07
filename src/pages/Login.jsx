@@ -1,22 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 
 const Login = () => {
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const idChangeHandler = (e) => {
+    const inputValue = e.target.value;
+    console.log("id" + inputValue);
+    setUserId(inputValue);
+  };
+  const passwordChangeHandler = (e) => {
+    const inputValue = e.target.value;
+    console.log("pw" + inputValue);
+    setPassword(inputValue);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    // console.log(e);
+    // console.log(e.target.userId.value);
+    // console.log(e.target.password.value);
+    const userId = e.target.userId.value;
+    const password = e.target.password.value;
+    const loginData = {
+      userId,
+      password,
+    };
+    // const submitLoginData = 뭔가통신하는customHooks(loginData);
+  };
+
   return (
     <>
       <LoginBody>
         <LoginComponent>
           <FormDiv>
-            <form action=''>
+            <form onSubmit={(e) => onSubmitHandler(e)}>
               <div>
                 <label htmlFor=''>
-                  <input type='text' name='' id='' />
+                  <input type='text' name='userId' id='userId' value={userId} onChange={(e) => idChangeHandler(e)} />
                   <label htmlFor=''></label>
                 </label>
               </div>
               <div>
                 <label htmlFor=''>
-                  <input type='password' name='' id='' />
+                  <input
+                    type='password'
+                    name='password'
+                    id='password'
+                    value={password}
+                    onChange={passwordChangeHandler}
+                  />
                   <label htmlFor=''></label>
                 </label>
               </div>
