@@ -3,11 +3,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
+import Main from "./pages/main"
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello</div>
+    element: <Main />
   },
   {
     path: "/login",
