@@ -3,15 +3,21 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
+import Join from './pages/Join';
+import LandingPage from './pages/LandingPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello</div>
+    element: <LandingPage />
   },
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "join",
+    element: <Join />
   }
 ])
 
