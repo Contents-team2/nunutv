@@ -1,6 +1,6 @@
 import React from 'react';
 import MainBanner from "../components/MainBanner"
-const main = () => {
+const Main = () => {
 
 
     return (
@@ -10,4 +10,4 @@ const main = () => {
     );
 };
 
-export default main;
+export default Main;
