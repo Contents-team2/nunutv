@@ -1,11 +1,12 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
-import Header from './layouts/Header';
+// import Header from './layouts/Header/Header';
 import Footer from './layouts/Footer';
 import Main from "./pages/Main";
 import Join from './pages/Join';
 import FirebaseTest from './pages/FirebaseTest';
+
 
 
 const router = createBrowserRouter([
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <RouterProvider router={router} />
       <Footer />
     </>
@@ -38,3 +39,4 @@ const App = () => {
 };
 
 export default App;
+
