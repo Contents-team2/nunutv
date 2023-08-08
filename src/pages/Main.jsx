@@ -13,12 +13,16 @@ const Main = () => {
         }, [])
     });
 
+
+
     return (
         <>
             {url !== null ? <MainBanner videourl={video} /> : <MainBanner />}
-
         </>
     );
 };
 
 export default Main;
+
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import MainBannerLeft from './MainBannerLeft';
 import MainBannerRight from './MainBannerRight';
@@ -48,10 +48,25 @@ export default MainBanner;
 const MainBannerImage = styled.div`
     display: flex;
     align-items: flex-end;
-    width: 100%;
+    width: 1200px;
     height: 600px;
     background-image: url("https://www.themoviedb.org/t/p/original/rKKRrr9UywyCi1pxyRKSOoauO9q.jpg");
     background-size: cover;
+
+
+    @media (max-width: 1100px) {
+    /* 화면 너비가 1100px 미만일 때 스타일 적용 */
+    height: 400px;
+  }
+  @media (max-width: 710px) {
+    /* 화면 너비가 768px 미만일 때 스타일 적용 */
+    height: 284px;
+  }
+
+  @media screen {
+    
+  }
+
 `
 
 const MainBannerDescription = styled.div`
@@ -59,10 +74,12 @@ display: flex;
 width: 100%;
 height: 100%;
 z-index: 2;
+justify-content: space-between;
 `
 
 const VideoWrapper = styled.div`
   position: absolute;
   width: 100%;
   z-index: 1;
+  overflow: hidden;
 `;

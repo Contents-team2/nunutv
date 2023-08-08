@@ -5,6 +5,7 @@ import { ReactComponent as DetailIcon } from '../assets/icon/detail.svg';
 import { ReactComponent as Logo } from '../assets/icon/logo.svg';
 
 
+
 const MainBannerLeft = () => {
 
 
@@ -13,7 +14,7 @@ const MainBannerLeft = () => {
             <MainBannerLeftTitle><Logo width="450px" height="150px" /></MainBannerLeftTitle>
 
             <div style={{ display: "flex", marginBottom: "50px" }}>
-                <PlayButton>
+                <PlayButton >
                     <PlayIcon width="1.5rem" height="1.5rem" style={{ marginRight: "1rem" }} />
                     <p>재생</p>
                 </PlayButton>
@@ -34,7 +35,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width: 70%;
+    width: 30%;
     height:  100%;
     padding-left :5%;
 `

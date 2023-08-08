@@ -8,6 +8,7 @@ import Join from './pages/Join';
 import FirebaseTest from './pages/FirebaseTest';
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,3 +39,4 @@ const App = () => {
 };
 
 export default App;
+
