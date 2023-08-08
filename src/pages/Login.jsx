@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
+// import { auth } from "../firebase/firebase";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [userId, setUserId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const idChangeHandler = (e) => {
+  const emailChangeHandler = (e) => {
     const inputValue = e.target.value;
     console.log("id" + inputValue);
-    setUserId(inputValue);
+    setEmail(inputValue);
   };
   const passwordChangeHandler = (e) => {
     const inputValue = e.target.value;
@@ -21,13 +25,23 @@ const Login = () => {
     // console.log(e);
     // console.log(e.target.userId.value);
     // console.log(e.target.password.value);
-    const userId = e.target.userId.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
-    const loginData = {
-      userId,
-      password,
-    };
-    // const submitLoginData = 뭔가통신하는customHooks(loginData);
+
+    // // 로그인
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     console.log("userdata", user);
+    //     localStorage.setItem("accessToken", user.accessToken);
+    //     navigate("/");
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorCode, errorMessage);
+    //   });
   };
 
   return (
@@ -35,10 +49,10 @@ const Login = () => {
       <LoginBody>
         <LoginComponent>
           <FormDiv>
-            <form onSubmit={(e) => onSubmitHandler(e)}>
+            <form onSubmit={onSubmitHandler}>
               <div>
                 <label htmlFor=''>
-                  <input type='text' name='userId' id='userId' value={userId} onChange={(e) => idChangeHandler(e)} />
+                  <input type='text' name='email' id='email' value={email} onChange={(e) => emailChangeHandler(e)} />
                   <label htmlFor=''></label>
                 </label>
               </div>
