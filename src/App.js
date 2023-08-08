@@ -1,36 +1,33 @@
+import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
 import Login from './pages/Login';
-import Header from './layouts/Header/Header';
+import Header from './layouts/Header';
 import Footer from './layouts/Footer';
+import Main from "./pages/Main";
+import Join from './pages/Join';
 
-const RootLayout = () => (
-  <>
-    <Header />
-    <Footer />
-  </>
-);
 
 const router = createBrowserRouter([
   {
-    element: <RootLayout />,
-    children: [
-      {
-        path: '/',
-        element: <div>123</div>
-      },
-      {
-        path: '/login',
-        element: <Login />
-      }
-    ]
+    path: "/",
+    element: <Main />
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "join",
+    element: <Join />
   }
-]);
+])
 
 const App = () => {
   return (
     <>
+      <Header />
       <RouterProvider router={router} />
+      <Footer />
     </>
   );
 };
