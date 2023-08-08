@@ -4,12 +4,11 @@ import Login from './pages/Login';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Join from './pages/Join';
-import LandingPage from './pages/LandingPage';
-
+import Main from "./pages/main"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LandingPage />
+    element: <Main />
   },
   {
     path: "/login",
