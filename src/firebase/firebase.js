@@ -14,7 +14,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig, 'myfirebaseapp');
 
-const database = getDatabase(app, "https://nunutv-c9b2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
-const storage = getStorage(app);
+const dbUrl = "https://nunutv-c9b2c-default-rtdb.asia-southeast1.firebasedatabase.app/"
+const storageUrl = "gs://nunutv-c9b2c.appspot.com"
+
+const database = getDatabase(app, dbUrl);
+const storage = getStorage(app, storageUrl);
 
 export { database, storage }
