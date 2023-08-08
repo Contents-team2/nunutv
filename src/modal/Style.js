@@ -15,7 +15,7 @@ export const Box = styled.div`
   position: fixed;
   border-radius: 1rem;
   margin-top: 2rem;
-  width: 60%;
+  width: 56.08%;
   height: 100vh;
   background-color: #181818;
   color: white;
@@ -23,6 +23,7 @@ export const Box = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  border: none;
 `;
 
 export const Display = styled.div`
