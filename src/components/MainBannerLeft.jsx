@@ -1,13 +1,16 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import { ReactComponent as PlayIcon } from '../asset/icon/play.svg';
-import { ReactComponent as DetailIcon } from '../asset/icon/detail.svg';
+import { ReactComponent as PlayIcon } from '../assets/icon/play.svg';
+import { ReactComponent as DetailIcon } from '../assets/icon/detail.svg';
+import { ReactComponent as Logo } from '../assets/icon/logo.svg';
 
 
 const MainBannerLeft = () => {
+
+
     return (
         <Container>
-            <MainBannerLeftTitle>최애의 아이</MainBannerLeftTitle>
+            <MainBannerLeftTitle><Logo width="450px" height="150px" /></MainBannerLeftTitle>
 
             <div style={{ display: "flex", marginBottom: "50px" }}>
                 <PlayButton>
@@ -33,7 +36,6 @@ const Container = styled.div`
     justify-content: flex-end;
     width: 70%;
     height:  100%;
-    background-color: rgba(201, 201, 201, 0.5);
     padding-left :5%;
 `
 

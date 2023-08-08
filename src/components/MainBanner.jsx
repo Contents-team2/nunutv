@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import MainBannerLeft from './MainBannerLeft';
 import MainBannerRight from './MainBannerRight';
 
+import ReactPlayer from 'react-player'
 
-const MainBanner = () => {
+
+const MainBanner = ({ videourl }) => {
+
+    const [isMute, setIsMute] = useState(true)
+
+
+    const muteHandler = () => {
+        setIsMute(prevIsMute => !prevIsMute);
+    }
+    console.log(isMute)
+
     return (
         <>
             <MainBannerImage>
+                <VideoWrapper>
+                    <ReactPlayer
+                        url={videourl}
+                        width='100%'         // 플레이어 크기 (가로)
+                        height='100%'        // 플레이어 크기 (세로)
+                        loop={true}
+                        playing={true}        // 자동 재생 on 사파리는 안됨
+                        muted={isMute}          // 음소거
+                        light={false}         // 플레이어 모드
+                        pip={true}            // pip 모드 설정 여부
+                    >
+                    </ReactPlayer>
+                </VideoWrapper>
                 <MainBannerDescription>
                     <MainBannerLeft />
-                    <MainBannerRight />
+                    <MainBannerRight muteHandler={muteHandler} muteState={isMute} />
                 </MainBannerDescription>
-            </MainBannerImage>
+            </MainBannerImage >
         </>
     );
 };
@@ -22,17 +46,23 @@ export default MainBanner;
 
 
 const MainBannerImage = styled.div`
- display: flex;
- align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
     width: 100%;
-    height: 700px;
+    height: 600px;
     background-image: url("https://www.themoviedb.org/t/p/original/rKKRrr9UywyCi1pxyRKSOoauO9q.jpg");
     background-size: cover;
-    padding-bottom: 2rem;
 `
 
 const MainBannerDescription = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
+display: flex;
+width: 100%;
+height: 100%;
+z-index: 2;
 `
+
+const VideoWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+`;
