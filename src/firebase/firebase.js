@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+// import { getAuth } from 'firebase/auth';
 import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 
@@ -19,5 +20,8 @@ const storageUrl = "gs://nunutv-c9b2c.appspot.com"
 
 const database = getDatabase(app, dbUrl);
 const storage = getStorage(app, storageUrl);
+// const auth = getAuth(app)
 
-export { database, storage }
+export { database, storage };
+
+export default app;
