@@ -1,9 +1,9 @@
 import React from "react";
 import logo from "../logo.svg";
 import * as S from "../Style";
-import { ReactComponent as PlayIcon } from "../../asset/icon/play.svg";
-import { ReactComponent as AddIcon } from "../../asset/icon/add.svg";
-import { ReactComponent as LikeIcon } from "../../asset/icon/like.svg";
+import { ReactComponent as PlayIcon } from "../../assets/icon/play.svg";
+import { ReactComponent as AddIcon } from "../../assets/icon/add.svg";
+import { ReactComponent as LikeIcon } from "../../assets/icon/like.svg";
 
 const NameAndPlayBox = (props) => {
   return (

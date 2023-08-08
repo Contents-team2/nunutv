@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "../Style";
-import tier from "../../asset/icon/tiers/15.svg";
+import tier from "../../assets/icon/tiers/15.svg";
 
 const Describe = (props) => {
   return (

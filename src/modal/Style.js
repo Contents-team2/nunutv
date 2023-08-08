@@ -30,16 +30,6 @@ export const Display = styled.div`
   height: 30rem;
 `;
 
-export const VideoBox = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 30rem;
-  overflow: hidden;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  border: none;
-`;
-
 export const Logo = styled.img`
   width: 20rem;
 `;
@@ -77,7 +67,17 @@ export const PlayButton = styled.div`
   padding: 0px 10px;
 `;
 
-export const ThumbVideo = styled.video`
+export const VideoBox = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 30rem;
+  overflow: hidden;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border: none;
+`;
+
+export const ThumbVideo = styled.div`
   width: 100%;
   height: 100%;
   object-fit: cover;
