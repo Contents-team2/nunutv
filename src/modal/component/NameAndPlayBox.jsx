@@ -1,6 +1,9 @@
 import React from "react";
 import logo from "../logo.svg";
 import * as S from "../Style";
+import { ReactComponent as PlayIcon } from "../../asset/icon/play.svg";
+import { ReactComponent as AddIcon } from "../../asset/icon/add.svg";
+import { ReactComponent as LikeIcon } from "../../asset/icon/like.svg";
 
 const NameAndPlayBox = (props) => {
   return (
@@ -11,9 +14,22 @@ const NameAndPlayBox = (props) => {
         )}
       </S.NameBox>
       <S.PlayBox>
-        <S.PlayBtn>재생</S.PlayBtn>
-        <div>찜</div>
-        <div>좋아요</div>
+        <S.PlayButton>
+          <PlayIcon
+            width="1.5rem"
+            height="1.5rem"
+            style={{ marginRight: "1rem" }}
+          />
+          <p>재생</p>
+        </S.PlayButton>
+        <AddIcon
+          width="2rem"
+          style={{ marginLeft: "1rem", cursor: "pointer", color: "grey" }}
+        />
+        <LikeIcon
+          width="2rem"
+          style={{ marginLeft: "1rem", cursor: "pointer", color: "grey" }}
+        />
       </S.PlayBox>
     </S.NameAndPlayBox>
   );

@@ -1,11 +1,14 @@
 import React from "react";
 import * as S from "../Style";
+import tier from "../../asset/icon/tiers/15.svg";
 
 const Describe = (props) => {
   return (
     <S.Describe>
       <S.SummaryBox>
-        <S.VideoTier>전체</S.VideoTier>
+        <S.VideoTierBox>
+          {props.tier === 15 && <S.VideoTier src={tier} alt="15세" />}
+        </S.VideoTierBox>
         <S.Summary>{props.summary}</S.Summary>
       </S.SummaryBox>
       <S.ActorAndGenre>
