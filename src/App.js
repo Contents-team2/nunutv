@@ -6,6 +6,7 @@ import Footer from './layouts/Footer';
 import Main from "./pages/Main";
 import Join from './pages/Join';
 import FirebaseTest from './pages/FirebaseTest';
+import Player from './pages/Player';
 
 
 
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
   {
     path: "firebase",
     element: <FirebaseTest />
+  }
+  ,
+  {
+    path: "/player",
+    element: <Player />
   }
 ])
 
