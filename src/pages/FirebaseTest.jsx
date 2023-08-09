@@ -1,15 +1,15 @@
 import { get } from "firebase/database";
 import { auth, storage } from "../firebase/firebase";
 import { ref, getDownloadURL } from "firebase/storage";
-import { getRdbRequest } from "../utils/firebase.api";
+import { getRdbRequest, postRdbRequest } from "../utils/firebase.api";
 import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const FirebaseTest = () => {
   const [user, setUser] = useState({});
   // //storage get 예제
-  // //파일에 대한 참조를 가져온다
-  // const starsRef = ref(storage, "/images");
+  // // 파일에 대한 참조를 가져온다
+  // const starsRef = ref(storage, "test-video.mp4");
 
   // //url을 통해 다운로드한다
   // getDownloadURL(starsRef).then((url) => {
@@ -40,9 +40,16 @@ const FirebaseTest = () => {
   //   setUser(data);
   // }, []);
 
+  // realtime database 예제
+  useEffect(() => {
+    // 호출할 url 생성
+    const url = `users/4`;
+    const data = getRdbRequest(url);
+    setUser(data);
+  }, []);
+
   const onClickHandler = () => {
-    // console.log(user);
-    console.log("dbData", dbData);
+    console.log(user);
   };
 
   // //인증 예제
