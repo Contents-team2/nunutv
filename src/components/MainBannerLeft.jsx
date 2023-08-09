@@ -8,15 +8,22 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MainBannerLeft = () => {
-    const [isModal, setIsModal] = useState(false);
+    const [isScaleUp, setIsScaleUp] = useState(false);
     const navigate = useNavigate()
 
     const playButtonHandler = () => {
-
-        setTimeout(() => {
+        setIsScaleUp(true)
+    }
+    //화면이 커졌다가 작아지며 /player 페이지로 이동
+    if (isScaleUp) {
+        const bodyTag = document.querySelector('body')
+        bodyTag.style.transform = 'scale(1.3)';
+        bodyTag.style.transition = "transform 1s ease";
+        setTimeout(async () => {
+            // await const setScaleDown = () => setIsScaleUp(false)
+            bodyTag.style.transform = 'scale(1)';
             navigate('/player')
         }, 1000)
-
     }
 
     return (
