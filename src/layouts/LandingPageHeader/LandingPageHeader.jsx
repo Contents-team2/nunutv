@@ -27,7 +27,7 @@ export default LandingPageHeader;
 
 const HeaderComponent = styled.header`
   position: relative;
-  z-index: 1;
+  z-index: 10;
 `;
 
 const HeaderDiv = styled.div`
