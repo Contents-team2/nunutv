@@ -16,7 +16,6 @@ const WallpaperImage = styled.div`
   height: 100%;
   background-size: cover;
   background-image: url("images/wallpaper/wallpaper.jpg");
-  background-color: #000;
   overflow: hidden;
   opacity: 0.5;
   position: absolute;
