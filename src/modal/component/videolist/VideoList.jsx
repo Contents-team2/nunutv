@@ -9,7 +9,6 @@ const VideoList = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // 데이터 가져오는 비동기 작업
       const data = [1, 2, 3, 4];
       const dbData = [];
       const storageRef = ref(storage);
