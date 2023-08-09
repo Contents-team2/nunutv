@@ -2,8 +2,21 @@ import React from "react";
 import logo from "../logo.svg";
 import * as S from "../Style";
 import { ReactComponent as PlayIcon } from "../../assets/icon/play.svg";
-import { ReactComponent as AddIcon } from "../../assets/icon/add.svg";
-import { ReactComponent as LikeIcon } from "../../assets/icon/like.svg";
+import AddLikeBtn from "./AddLikeBtn";
+import { styled } from "styled-components";
+
+const StyledPlayIcon = styled.svg`
+  width: 1.5rem;
+  padding-right: 1rem;
+  @media (max-width: 1023px) {
+    width: 1rem;
+    padding-right: 0.8rem;
+  }
+  @media (max-width: 767px) {
+    width: 0.5rem;
+    padding-right: 0.5rem;
+  }
+`;
 
 const NameAndPlayBox = (props) => {
   return (
@@ -15,21 +28,21 @@ const NameAndPlayBox = (props) => {
       </S.NameBox>
       <S.PlayBox>
         <S.PlayButton>
-          <PlayIcon
-            width="1.5rem"
-            height="1.5rem"
-            style={{ marginRight: "1rem" }}
-          />
+          <StyledPlayIcon
+            width="current"
+            height="current"
+            viewBox="0 0 79 86"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 4.17258C0 1.00341 3.39779 -1.00559 6.17467 0.521706L76.6954 39.3081C79.5738 40.891 79.5738 45.0269 76.6954 46.6098L6.17467 85.396C3.39775 86.9235 0 84.9144 0 81.7452V4.17258Z"
+              fill="black"
+            />
+          </StyledPlayIcon>
           <p>재생</p>
         </S.PlayButton>
-        <AddIcon
-          width="2rem"
-          style={{ marginLeft: "1rem", cursor: "pointer", color: "grey" }}
-        />
-        <LikeIcon
-          width="2rem"
-          style={{ marginLeft: "1rem", cursor: "pointer", color: "grey" }}
-        />
+        <AddLikeBtn />
       </S.PlayBox>
     </S.NameAndPlayBox>
   );
