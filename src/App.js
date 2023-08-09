@@ -1,19 +1,20 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Login from './pages/Login';
-import Header from './layouts/Header';
-import Footer from './layouts/Footer';
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Login from "./pages/Login";
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+import Carousel from "./pages/Carousel";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello</div>
+    element: <Carousel />,
   },
   {
     path: "/login",
-    element: <Login />
-  }
-])
+    element: <Login />,
+  },
+]);
 
 const App = () => {
   return (
