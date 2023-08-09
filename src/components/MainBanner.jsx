@@ -51,6 +51,7 @@ const MainBannerImage = styled.div`
 @media(max-width: 710px) {
     /* 화면 너비가 768px 미만일 때 스타일 적용 */
     height: 284px;
+    
 }
 
 @media screen {
