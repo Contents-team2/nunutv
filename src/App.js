@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
@@ -7,15 +8,14 @@ import FirebaseTest from './pages/FirebaseTest';
 import JoinFirst from './pages/JoinFirst';
 import JoinSecond from './pages/JoinSecond';
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />
+    element: <Main />,
   },
   {
     path: "/login",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "joinFirst",
@@ -27,9 +27,9 @@ const router = createBrowserRouter([
   },
   {
     path: "firebase",
-    element: <FirebaseTest />
-  }
-])
+    element: <FirebaseTest />,
+  },
+]);
 
 const App = () => {
   return (
