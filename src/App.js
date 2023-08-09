@@ -1,8 +1,8 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Login from './pages/Login';
-// import Header from './layouts/Header/Header';
-import Footer from './layouts/Footer';
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Login from "./pages/Login";
+// import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
 import Main from "./pages/Main";
 import Join from './pages/Join';
 import FirebaseTest from './pages/FirebaseTest';
@@ -12,20 +12,18 @@ import Player from './pages/Player';
 import { useSelector } from 'react-redux';
 
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />
+    element: <Main />,
   },
   {
     path: "/login",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "join",
-    element: <Join />
+    element: <Join />,
   },
   {
     path: "firebase",
@@ -36,6 +34,7 @@ const router = createBrowserRouter([
     element: <Player />
   }
 ])
+
 
 const App = () => {
 
@@ -62,4 +61,3 @@ const App = () => {
 };
 
 export default App;
-

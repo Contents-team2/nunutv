@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import MainBanner from "../components/MainBanner"
+import React, { useState, useEffect } from "react";
+import MainBanner from "../components/MainBanner";
 import { storage } from "../firebase/firebase";
 import { ref, getDownloadURL } from "firebase/storage";
-import video from "../assets/video.mp4"
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -10,6 +9,7 @@ import { play, stop } from "../store/store"
 
 
 const Main = () => {
+
     //파이어베이스에서 영상의 URL을 가져오는 기능
     const [url, setUrl] = useState(null)
     const starsRef = ref(storage, "real-video.mp4");
@@ -39,9 +39,7 @@ const Main = () => {
             {url !== null ? <MainBanner videourl={url} /> : <MainBanner />}
         </>
     );
+
 };
 
 export default Main;
-
-
-
