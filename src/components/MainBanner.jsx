@@ -14,7 +14,7 @@ const MainBanner = ({ videourl }) => {
     const muteHandler = () => {
         setIsMute(prevIsMute => !prevIsMute);
     }
-    console.log(isMute)
+
 
     return (
         <>
@@ -33,7 +33,7 @@ const MainBanner = ({ videourl }) => {
                     </ReactPlayer>
                 </VideoWrapper>
                 <MainBannerDescription>
-                    <MainBannerLeft />
+                    <MainBannerLeft videourl={videourl} />
                     <MainBannerRight muteHandler={muteHandler} muteState={isMute} />
                 </MainBannerDescription>
             </MainBannerImage >

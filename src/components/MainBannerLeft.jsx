@@ -4,14 +4,22 @@ import { ReactComponent as PlayIcon } from '../assets/icon/play.svg';
 import { ReactComponent as DetailIcon } from '../assets/icon/detail.svg';
 import { ReactComponent as Logo } from '../assets/icon/logo.svg';
 import { useNavigate } from 'react-router-dom';
+//리액트 리덕스 추가
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { play } from "../store/store"
 
+const MainBannerLeft = ({ videourl }) => {
+    const dispatch = useDispatch();
+    // 재생모드 라는 상태 가져오기
+    const playMode = useSelector(state => state.value);
+    console.log(playMode)
 
-
-const MainBannerLeft = () => {
     const [isScaleUp, setIsScaleUp] = useState(false);
     const navigate = useNavigate()
-
+    // 전역상태로 URL을 보냄
     const playButtonHandler = () => {
+        dispatch(play(videourl));
         setIsScaleUp(true)
     }
     //화면이 커졌다가 작아지며 /player 페이지로 이동
@@ -20,10 +28,9 @@ const MainBannerLeft = () => {
         bodyTag.style.transform = 'scale(1.3)';
         bodyTag.style.transition = "transform 1s ease";
         setTimeout(async () => {
-            // await const setScaleDown = () => setIsScaleUp(false)
             bodyTag.style.transform = 'scale(1)';
             navigate('/player')
-        }, 1000)
+        }, 800)
     }
 
     return (
