@@ -79,7 +79,7 @@ const MainBannerLeft = ({ videourl }) => {
         </ModalPortal>
       )}
       <MainBannerLeftTitle>
-        <Logo width='450px' height='150px' />
+        <Logo width='100%' height='100%' />
       </MainBannerLeftTitle>
 
       <div style={{ display: "flex", marginBottom: "50px" }}>
@@ -102,17 +102,19 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: start;
   width: 30%;
   height: 100%;
   padding-left: 5%;
 `;
 
 const MainBannerLeftTitle = styled.div`
-  font-size: 6rem;
-  font-weight: 600;
-  @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
-  font-family: "Black Han Sans", sans-serif;
-  margin-bottom: 2rem;
+  width: 450px;
+  height: 150px;
+  @media (max-width: 710px){
+    width: 270px;
+  height: 90px;
+  }
 `;
 
 const PlayButton = styled.div`
@@ -120,6 +122,7 @@ const PlayButton = styled.div`
   justify-content: center;
   align-items: center;
   width: 120px;
+  min-width: 100px;
   height: 45px;
   border-radius: 4px;
   cursor: pointer;
@@ -127,6 +130,7 @@ const PlayButton = styled.div`
   background-color: white;
   font-weight: 600;
   padding: 0px 10px;
+
 `;
 
 const DetailButton = styled.div`
@@ -134,6 +138,7 @@ const DetailButton = styled.div`
   justify-content: center;
   align-items: center;
   width: 120px;
+  min-width: 100px;
   height: 45px;
   border-radius: 4px;
   cursor: pointer;
