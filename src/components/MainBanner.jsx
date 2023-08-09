@@ -28,7 +28,7 @@ const MainBanner = ({ videourl }) => {
                         playing={true}        // 자동 재생 on 사파리는 안됨
                         muted={isMute}          // 음소거
                         light={false}         // 플레이어 모드
-                        pip={true}            // pip 모드 설정 여부
+                        pip={true}         // pip 모드 설정 여부
                     >
                     </ReactPlayer>
                 </VideoWrapper>
@@ -80,6 +80,7 @@ justify-content: space-between;
 const VideoWrapper = styled.div`
   position: absolute;
   width: 100%;
+  
   z-index: 1;
   overflow: hidden;
 `;
