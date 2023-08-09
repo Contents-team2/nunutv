@@ -1,11 +1,11 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
-import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Main from "./pages/Main";
-import Join from './pages/Join';
 import FirebaseTest from './pages/FirebaseTest';
+import JoinFirst from './pages/JoinFirst';
+import JoinSecond from './pages/JoinSecond';
 
 
 const router = createBrowserRouter([
@@ -18,8 +18,12 @@ const router = createBrowserRouter([
     element: <Login />
   },
   {
-    path: "join",
-    element: <Join />
+    path: "joinFirst",
+    element: <JoinFirst />
+  },
+  {
+    path: "/joinSecond",
+    element: <JoinSecond />
   },
   {
     path: "firebase",
@@ -30,7 +34,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <JoinFirst />
+      <JoinSecond />
       <RouterProvider router={router} />
       <Footer />
     </>
