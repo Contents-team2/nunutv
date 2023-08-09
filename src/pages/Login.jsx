@@ -69,15 +69,13 @@ const Login = () => {
               Netflix 회원이 아닌가요?
               <a href='/'>지금 가입하세요</a>.
             </div>
-            <div class='recaptcha-terms-of-use' data-uia='recaptcha-terms-of-use'>
+            <div>
               <p>
                 <span>이 페이지는 Google reCAPTCHA의 보호를 받아 사용자가 로봇이 아님을 확인합니다.</span>&nbsp;
-                <button class='recaptcha-terms-of-use--link-button' data-uia='recaptcha-learn-more-button'>
-                  자세히 알아보기.
-                </button>
+                <button>자세히 알아보기.</button>
               </p>
-              <div class='recaptcha-terms-of-use--disclosure' data-uia='recaptcha-disclosure'>
-                <span id='' data-uia='recaptcha-disclosure-text'>
+              <div>
+                <span>
                   Google reCAPTCHA가 수집하는 정보에는 Google{" "}
                   <a href='https://policies.google.com/privacy'>개인정보처리방침</a>과{" "}
                   <a href='https://policies.google.com/terms'>서비스 약관</a>이 적용되며, 해당 정보는 reCAPTCHA 서비스
