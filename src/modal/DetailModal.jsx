@@ -1,13 +1,20 @@
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import * as S from "./Style";
 import VideoBox from "./component/VideoBox";
 import NameAndPlayBox from "./component/NameAndPlayBox";
 import Describe from "./component/Describe";
 import VideoList from "./component/videolist/VideoList";
 import ModalVideoDetail from "./component/ModalVideoDetail";
+import muteBtn from "../assets/icon/muteon.svg";
 
 const DetailModal = forwardRef((props, ref) => {
   const data = props.data;
+
+  const [isMute, setIsMute] = useState(true);
+
+  const muteHandler = () => {
+    setIsMute((prevIsMute) => !prevIsMute);
+  };
 
   useEffect(() => {
     document.body.style.cssText = `
@@ -26,7 +33,8 @@ const DetailModal = forwardRef((props, ref) => {
       <S.Box>
         <S.Display>
           <S.CloseBtn onClick={props.onClose}>x</S.CloseBtn>
-          <VideoBox />
+          <S.MuteBtn src={muteBtn} onClick={muteHandler}></S.MuteBtn>
+          <VideoBox isMute={isMute} muteHandler={muteHandler} />
           <NameAndPlayBox name={data.name} />
         </S.Display>
         <Describe
