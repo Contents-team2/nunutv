@@ -6,12 +6,13 @@ import Main from "./pages/Main";
 import Join from './pages/Join';
 import FirebaseTest from './pages/FirebaseTest';
 import LandingPageHeader from './layouts/LandingPageHeader/LandingPageHeader';
+import LandingPage from './pages/LandingPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />
+    element: <LandingPage />
   },
   {
     path: "/login",
