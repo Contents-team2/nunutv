@@ -1,17 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import LanguageBox from "../../components/LanguageBox";
 
 const LandingPageHeader = () => {
   return (
     <>
       <HeaderComponent>
         <HeaderDiv>
-          <TitleDiv>NuNu</TitleDiv>
-          <SelectDiv>
-              <option value='kor'>한국어</option>
-              <option value='eng'>English</option>
-          </SelectDiv>
-          <ButtonDiv>로그인</ButtonDiv>
+          <LogoBox>
+            <Img src='/images/logo/nunutv-logo.png' alt='nunutv' />
+            <TitleSpan>NuNu</TitleSpan>
+          </LogoBox>
+          <SelectBox>
+            <LanguageBox />
+          </SelectBox>
+          <ButtonBox>
+            <LoginAnchor>로그인</LoginAnchor>
+          </ButtonBox>
         </HeaderDiv>
       </HeaderComponent>
     </>
@@ -21,46 +26,56 @@ const LandingPageHeader = () => {
 export default LandingPageHeader;
 
 const HeaderComponent = styled.header`
-  width: 1500px;
-  height: 80px;
-  margin: 0px 100px;
-  background-color: gray;
+  position: relative;
+  z-index: 1;
 `;
 
 const HeaderDiv = styled.div`
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  height: 5rem;
+  left: 0;
+  right: 0;
+  margin: 0 32px;
   display: flex;
   align-items: center;
-  padding-top: 10px;
+  justify-content: flex-end;
+  position: absolute;
 `;
 
-const TitleDiv = styled.div`
-  width: 1300px;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  font-size: 50px;
+const LogoBox = styled.span`
+  margin: 0 1rem;
+  margin-left: 0;
+  margin-right: auto;
 `;
 
-const SelectDiv = styled.select`
-  width: 130px;
-  height: 40px;
-  margin: 10px 10px;
-  background-color: black;
+const Img = styled.img`
+  width: 9rem;
+  height: 3rem;
+  display: block;
+`;
+
+const TitleSpan = styled.span`
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  word-break: keep-all;
+`;
+
+const SelectBox = styled.span`
+  margin-right: 0;
+`;
+
+const ButtonBox = styled.span`
+  padding: 0 1%;
+`;
+
+const LoginAnchor = styled.a`
+  background-color: #e50914;
+  padding: 6px 20px;
+  border-radius: 4px;
   color: white;
-  border-radius: 8px;
-  border-width: medium;
-  border-color: white;
-  text-align: center;
-  font-size: 15px;
-`;
-
-const ButtonDiv = styled.button`
-  width: 70px;
-  height: 35px;
-  margin: 10px 10px;
-  background-color: red;
-  color: white;
-  border-radius: 8px;
-  border: none;
   font-size: 14px;
+  word-break: keep-all;
 `;
