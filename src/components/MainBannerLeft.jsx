@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { ReactComponent as PlayIcon } from '../assets/icon/play.svg';
 import { ReactComponent as DetailIcon } from '../assets/icon/detail.svg';
@@ -7,7 +7,12 @@ import { ReactComponent as Logo } from '../assets/icon/logo.svg';
 
 
 const MainBannerLeft = () => {
+    const [isModal, setIsModal] = useState(false);
 
+
+    const playButtonHandler = () => {
+        console.log("재생버튼 클릭")
+    }
 
     return (
         <Container>
