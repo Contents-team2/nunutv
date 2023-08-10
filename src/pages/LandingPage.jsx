@@ -71,7 +71,7 @@ const LandingPage = () => {
               </Info2>
             </ContentsDiv2>
           </ContainerBox>
-          {/* <ContainerBox>
+          <ContainerBox>
             <Info1>
               <h2>어린이 전용 프로필을 만들어 보세요</h2>
               <p>
@@ -82,29 +82,40 @@ const LandingPage = () => {
             <div>
               <img src='/images/landingPage/kids.png' alt='video-container' />
             </div>
-          </ContainerBox> */}
-
-          {/* <ContainerBox>
+          </ContainerBox>
+          <ContainerBox>
             <div>
               <img src='/images/landingPage/offline-save.jpg' alt='video-container' />
             </div>
-            <Info2>
+            <Info1>
               <h2>즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요</h2>
               <p>광고 없는 멤버십에서만 이용 가능합니다.</p>
-            </Info2>
-          </ContainerBox> */}
+            </Info1>
+          </ContainerBox>
 
-          <div>
-            <h2>자주 묻는 질문</h2>
-            <div className='faq-container'>1</div>
-            <div className='faq-container'>2</div>
-            <div className='faq-container'>3</div>
-            <div className='faq-container'>4</div>
-            <div className='faq-container'>5</div>
-            <div className='faq-container'>6</div>
-
-            <EmailForm />
-          </div>
+          <FAQDiv>
+            <FQAInnerDiv>
+              <h2>자주 묻는 질문</h2>
+              <FAQUL>
+                <FAQ className='faq-container'>
+                  <Question>
+                    <FAQButton>
+                      <ButtonSpan>넷플릭스에서 어떤 콘텐츠를 시청할 수 </ButtonSpan>
+                      <img src='/images/landingPage/plus.svg' alt='+' />
+                    </FAQButton>
+                  </Question>
+                  <FAQInnerDiv>
+                    <Answer>
+                      넷플릭스는 장편 영화, 다큐멘터리, 시리즈, 애니메이션, 각종 상을 수상한 넷플릭스 오리지널 등 수많은
+                      콘텐츠를 확보하고 있습니다. 마음에 드는 콘텐츠를 원하는 시간에 원하는 만큼 시청하실 수 있습니다.{" "}
+                    </Answer>
+                    <a href='https://www.netflix.com/kr/browse/genre/839338'>넷플릭스 콘텐츠를 한번 살펴보세요</a>
+                  </FAQInnerDiv>
+                </FAQ>
+              </FAQUL>
+              <EmailForm />
+            </FQAInnerDiv>
+          </FAQDiv>
         </BackgroundDiv>
       </LandingPageContainer>
     </>
@@ -255,20 +266,21 @@ const ArrowRight = styled.img`
 `;
 
 const ContainerBox = styled.div`
-  /* background-color: grey; */
+  /* background-color: #222020; */
   /* max-width: 96%; */
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   position: relative;
+  border-bottom: 0.5rem solid #222;
 `;
 
 const ContentsDiv1 = styled.div`
   /* background-color: blue; */
   position: relative;
   max-width: 500px;
-  right: 20%;
+  right: 10%;
 `;
 
 const Info1 = styled.div`
@@ -286,11 +298,12 @@ const Info1 = styled.div`
   }
   p {
     font-size: 24px;
+    margin-top: 30px;
   }
 `;
 
 const ContentsWrapper1 = styled.div`
-  background-color: red;
+  /* background-color: red; */
   max-width: 500px;
   position: absolute;
   margin: 0 10% 0 90%;
@@ -313,17 +326,17 @@ const Video1 = styled.video`
 `;
 
 const ContentsDiv2 = styled.div`
-  /* background-color: blue; */
+  background-color: #000;
   position: relative;
   max-width: 500px;
-  right: 20%;
+  right: 10%;
 `;
 
 const ContentsWrapper2 = styled.div`
-  background-color: red;
+  /* background-color: red; */
   max-width: 500px;
   position: absolute;
-  margin: 0 10% 0 90%;
+  margin-left: -200px;
   top: 10px;
   left: 10%;
 `;
@@ -334,15 +347,17 @@ const TV2 = styled.img`
   z-index: 3;
 `;
 const Video2 = styled.video`
+  width: 400px;
   position: absolute;
-  top: 100px;
-  left: 88px;
+  top: 50px;
+  left: 120px;
   z-index: 2;
 `;
 
 const Info2 = styled.div`
   width: 500px;
   height: 500px;
+  margin-left: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -355,5 +370,44 @@ const Info2 = styled.div`
   }
   p {
     font-size: 24px;
+    margin-top: 40px;
   }
 `;
+
+const FQAInnerDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const FAQDiv = styled.div`
+  border-bottom: 0.5rem solid #222;
+  h2 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 30px;
+  }
+  div {
+    font-size: 24px;
+    width: 95%;
+    margin: 0 auto 10px;
+  }
+`;
+
+const FAQUL = styled.ul``;
+
+const FAQ = styled.li`
+  background-color: #333;
+  padding: 30px;
+  margin-bottom: 10px;
+`;
+
+const Question = styled.h3`
+  border-bottom: 1px solid #000;
+`;
+const FAQButton = styled.button``;
+const ButtonSpan = styled.span``;
+
+const FAQInnerDiv = styled.div``;
+const Answer = styled.span``;
