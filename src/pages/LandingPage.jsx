@@ -162,8 +162,8 @@ const LandingPage = () => {
             <FQAInnerDiv>
               <H2Tag>자주 묻는 질문</H2Tag>
               <FAQUL>
-                {faqList.map((faq) => (
-                  <FaqList faq={faq} />
+                {faqList.map((faq, i) => (
+                  <FaqList key={i} faq={faq} />
                 ))}
               </FAQUL>
               <EmailForm />
