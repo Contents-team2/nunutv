@@ -38,7 +38,8 @@ export const Display = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 20rem;
+  width: 15rem;
+
   @media (max-width: 1023px) {
     width: 10rem;
   }
@@ -48,8 +49,10 @@ export const Logo = styled.img`
 `;
 
 export const NameAndPlayBox = styled.div`
+  width: 20rem;
+  height: 20rem;
   position: absolute;
-  margin-top: 17rem;
+  margin-top: 14rem;
   margin-left: 4rem;
   color: black;
   @media (max-width: 1023px) {
@@ -108,6 +111,12 @@ export const PlayButton = styled.div`
 export const AddBox = styled.div``;
 
 export const LikeBox = styled.div``;
+
+export const PlayBtnBox = styled.div``;
+
+export const ModalBtnBox = styled.div`
+  right: 0;
+`;
 
 const ExpandAnimation = keyframes`
   from {
