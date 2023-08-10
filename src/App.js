@@ -1,7 +1,7 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Login from "./pages/Login";
-// import Header from "./layouts/Header";
+import MainHeader from "./layouts/Header/MainHeader"
 import Footer from "./layouts/Footer";
 import Main from "./pages/Main";
 import FirebaseTest from './pages/FirebaseTest';
@@ -12,6 +12,8 @@ import { useSelector } from 'react-redux';
 import JoinFirst from "./pages/JoinFirst";
 import JoinSecond from "./pages/JoinSecond";
 import JoinThird from "./pages/JoinThird";
+import LandingPage from "./pages/LandingPage";
+import LandingPageHeader from "./layouts/LandingPageHeader/LandingPageHeader"
 
 
 const router = createBrowserRouter([
@@ -46,28 +48,53 @@ const router = createBrowserRouter([
 ])
 
 
+
 const App = () => {
+  const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
 
-  // 전역상태플레이모드를 가져옴 재생이 시작되었으면 동영상 플레이어만 보여줌
-  const playmode = useSelector(state => state.value)
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        {isLogin ? <Route index element={<Main />} /> : <Route index element={<LandingPage />} />}
 
-  if (playmode === "start") {
-    return (
-      <>
-        <RouterProvider router={router} />
-      </>
+        <Route path="login" element={<Login />} />
+        <Route path="join1" element={<JoinFirst />} />
+        <Route path="join2" element={<JoinSecond />} />
+        <Route path="firebase" element={<FirebaseTest />} />
+        <Route path="player" element={<Player />} />
+
+      </Route >
     )
-  }
+  )
+
   return (
     <>
-
       {/* <Header /> */}
       <RouterProvider router={router} />
-      <Footer />
-
     </>
   );
-
 };
 
 export default App;
+
+
+const Root = () => {
+  const playmode = useSelector(state => state.playModePersistedRudecer.value)
+  const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
+  console.log("isLogin", isLogin)
+  console.log("playmode", playmode)
+  return (
+    <>
+      <div>
+        {isLogin ? <MainHeader /> : <LandingPageHeader />}
+
+      </div>
+      <div>
+        <Outlet />
+      </div>
+      <div>
+        {playmode === "start" ? null : <Footer />}
+      </div>
+    </>
+  )
+}

@@ -28,9 +28,9 @@ const postRdbRequest = (url, data) => {
   set(ref(db, url), data);
 };
 
-const patchRdbRequest = () => {};
-const putRdbRequest = () => {};
-const deleteRdbRequest = () => {};
+const patchRdbRequest = () => { };
+const putRdbRequest = () => { };
+const deleteRdbRequest = () => { };
 
 export {
   getRdbRequest,

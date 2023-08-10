@@ -22,7 +22,7 @@ const WallpaperImage = styled.div`
   padding-bottom: 2rem;
   z-index: -1;
 
-  @media (max-width: 740px) {
+  /* @media (max-width: 740px) {
     display: none;
-  }
+  } */
 `;

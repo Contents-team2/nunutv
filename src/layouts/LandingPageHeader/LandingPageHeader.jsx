@@ -15,7 +15,7 @@ const LandingPageHeader = () => {
             <LanguageBox />
           </SelectBox>
           <ButtonBox>
-            <LoginAnchor>로그인</LoginAnchor>
+            <LoginAnchor href='login'>로그인</LoginAnchor>
           </ButtonBox>
         </HeaderDiv>
       </HeaderComponent>
@@ -27,7 +27,7 @@ export default LandingPageHeader;
 
 const HeaderComponent = styled.header`
   position: relative;
-  z-index: 1;
+  z-index: 10;
 `;
 
 const HeaderDiv = styled.div`
@@ -78,4 +78,8 @@ const LoginAnchor = styled.a`
   color: white;
   font-size: 14px;
   word-break: keep-all;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
