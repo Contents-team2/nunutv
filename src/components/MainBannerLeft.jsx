@@ -77,8 +77,8 @@ const MainBannerLeft = ({ videourl }) => {
             ref={modalRef}
             outsideClose={outsideCloseHandler}
             onClose={onCloseBtn}
-            data={videosData}
-            videourl={videourl}
+            data={videosData[0]}
+            videourl={videosData[0].video}
           />
         </ModalPortal>
       )}
