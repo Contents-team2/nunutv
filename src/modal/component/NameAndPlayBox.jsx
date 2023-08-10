@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../logo.svg";
 import * as S from "../Style";
-import { ReactComponent as PlayIcon } from "../../assets/icon/play.svg";
 import AddLikeBtn from "./AddLikeBtn";
 import { styled } from "styled-components";
 

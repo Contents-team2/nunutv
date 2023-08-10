@@ -34,7 +34,7 @@ const DetailModal = forwardRef((props, ref) => {
         <S.Display>
           <S.CloseBtn onClick={props.onClose}>x</S.CloseBtn>
           <S.MuteBtn src={muteBtn} onClick={muteHandler}></S.MuteBtn>
-          <VideoBox isMute={isMute} muteHandler={muteHandler} />
+          <VideoBox isMute={isMute} />
           <NameAndPlayBox name={data.name} />
         </S.Display>
         <Describe
