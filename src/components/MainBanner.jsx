@@ -70,5 +70,7 @@ const MainBannerDescription = styled.div`
 const VideoWrapper = styled.div`
   position: absolute;
   width: 100%;
+
+  z-index: 1;
   overflow: hidden;
 `;

@@ -47,13 +47,12 @@ const Root = () => {
   return (
     <>
       <div>
-        {isLogin ? <LandingPageHeader /> : <MainHeader />}
-      </div>
+        {isLogin ? <MainHeader /> : <LandingPageHeader />}
 
+      </div>
       <div>
         <Outlet />
       </div>
-
       <div>
         {playmode === "start" ? null : <Footer />}
       </div>
