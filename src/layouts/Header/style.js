@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   top: 0;
   height: auto;
   min-height: 4.375rem;
-  z-index: 1;
+  z-index: 10;
 `;
 
 export const HeaderWrapper = styled.div`
