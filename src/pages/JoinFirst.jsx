@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import LandingPageHeader from "../layouts/LandingPageHeader/LandingPageHeader";
 
 const JoinFirst = () => {
 
-  // const Intro = () => {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  //   const goToJoinSecond = () => {
-  //     navigate("/joinSecond");
-  //   }
-  // };
+  function goToJoinSecond() {
+      navigate("/joinSecond");
+  }
+
+
 
   return (
     <>
+    <LandingPageHeader />
     <BodyDiv>
       <Form>
         <UpperInfo>
@@ -25,52 +28,52 @@ const JoinFirst = () => {
           </UlDiv>
         </UpperInfo>
         <RedBox>
-          <PriceOption>광고형 스탠다드</PriceOption>
-          <PriceOption>스탠다드</PriceOption>
-          <PriceOption>프리미엄</PriceOption>
+          <PriceOption className="option">광고형 스탠다드</PriceOption>
+          <PriceOption className="option">스탠다드</PriceOption>
+          <PriceOption className="option">프리미엄</PriceOption>
         </RedBox>
         <TableOuter>
             <TableRow>
-              <TableCol className="col1">월 요금</TableCol>
-              <TableCol className="col2">5,500원</TableCol>
-              <TableCol className="col3">13,500원</TableCol>
-              <TableCol className="col4">17,000원</TableCol>
+              <TableCol1>월 요금</TableCol1>
+              <TableCol2>5,500원</TableCol2>
+              <TableCol3>13,500원</TableCol3>
+              <TableCol4>17,000원</TableCol4>
             </TableRow>
             <TableRow>
-              <TableCol className="col1">영상 화질</TableCol>
-              <TableCol className="col2">매우 좋음</TableCol>
-              <TableCol className="col3">매우 좋음</TableCol>
-              <TableCol className="col4">가장 좋음</TableCol>
+              <TableCol1>영상 화질</TableCol1>
+              <TableCol2>매우 좋음</TableCol2>
+              <TableCol3>매우 좋음</TableCol3>
+              <TableCol4>가장 좋음</TableCol4>
             </TableRow>
             <TableRow>
-              <TableCol className="col1">해상도</TableCol>
-              <TableCol className="col2">1080p</TableCol>
-              <TableCol className="col3">1080p</TableCol>
-              <TableCol className="col4">4K+HDR</TableCol>
+              <TableCol1>해상도</TableCol1>
+              <TableCol2>1080p</TableCol2>
+              <TableCol3>1080p</TableCol3>
+              <TableCol4>4K+HDR</TableCol4>
             </TableRow>
             <TableRow>
-              <TableCol className="col1">TV, 컴퓨터, 스마트폰, 태블릿으로 시청</TableCol>
-              <TableCol className="col2">Yes</TableCol>
-              <TableCol className="col3">Yes</TableCol>
-              <TableCol className="col4">Yes</TableCol>
+              <TableCol1>TV, 컴퓨터, 스마트폰, 태블릿으로 시청</TableCol1>
+              <TableCol2>Yes</TableCol2>
+              <TableCol3>Yes</TableCol3>
+              <TableCol4>Yes</TableCol4>
             </TableRow>
             <TableRow>
-              <TableCol classNames="col1">저장</TableCol>
-              <TableCol classNames="col2">No</TableCol>
-              <TableCol classNames="col3">Yes</TableCol>
-              <TableCol classNames="col4">Yes</TableCol>
+              <TableCol1>저장</TableCol1>
+              <TableCol2>No</TableCol2>
+              <TableCol3>Yes</TableCol3>
+              <TableCol4>Yes</TableCol4>
             </TableRow>
         </TableOuter>
         <AdDiv>광고형 멤버십에는 몇 가지 차이점이 있습니다. 광고형 멤버십에 대해 알아보세요.</AdDiv>
         <AdDiv>광고형 멤버십을 선택하면, 맞춤형 광고와 Netflix의 개인정보 처리방침에 부합하는 기타 목적을 위해 생년월일을 제공해 주셔야 합니다.</AdDiv>
         <AdDiv>HD(720p), 풀 HD(1080p), UHD(4K), HDR 화질 제공 여부는 사용하는 인터넷 서비스와 디바이스의 성능에 따라 달라질 수 있습니다. 모든 콘텐츠가 모든 화질로 제공되지는 않습니다. 자세한 내용은 이용 약관을 확인하세요.</AdDiv>
         <AdDiv>함께 거주하는 사람들만 계정을 함께 이용할 수 있습니다. 프리미엄 멤버십은 동시접속 4명, 스탠다드 또는 광고형 스탠다드는 2명, 베이식은 1명까지 가능합니다.</AdDiv>
-        <ButtonDiv /*onClick={goToJoinSecond}*/>다음</ButtonDiv>
+        <ButtonDiv onClick={goToJoinSecond}>다음</ButtonDiv>
       </Form>
     </BodyDiv>
     </>
   );
-};
+};  
 
 export default JoinFirst;
 
@@ -80,7 +83,8 @@ const BodyDiv = styled.div`
 `;
 
 const Form = styled.form`
-display: block;
+  display: block;
+  margin: 180px 0 50px 47px;
 `;
 
 const UpperInfo = styled.div`
@@ -111,26 +115,28 @@ const RedBox = styled.label`
   display: flex;
   justify-content: flex-end;
   margin: 10px 30px;
+  width: 1300px;
 `;
 
-const PriceOption = styled.div`
+const PriceOption = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 30px;
-  padding: 20px 20px;
-  width: 80px;
-  height: 80px;
-  background-color: red;
+  padding: 25px 25px;
+  width: 135px;
+  height: 135px;
+  background-color: rgb(255,0,0,0.6);
   color: white;
   font-size: 20px;
   text-align: center;
   border-radius: 3px;
+  border: none;
 `;
 
 const TableOuter = styled.table`
-  margin: 10px 360px;
-  width: 850px;
+  margin: 10px 370px;
+  width: 930px;
   border-collapse: separate;
   border-spacing: 0 20px;
   font-size: 15px;
@@ -141,13 +147,46 @@ const TableRow = styled.tr`
   
 `;
 
-const TableCol = styled.td`
+const TableCol1 = styled.td`
   border-bottom: 1px solid #444444;
   padding: 0 0 30px 0;
+  width: 380px;
+  font-size: 18px;
+`;
+
+const TableCol2 = styled.td`
+  border-bottom: 1px solid #444444;
+  padding: 0 0 30px 0;
+  width: 190px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: gray;
+`;
+
+const TableCol3 = styled.td`
+  border-bottom: 1px solid #444444;
+  padding: 0 0 30px 0;
+  width: 195px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: gray;
+`;
+
+const TableCol4 = styled.td`
+  border-bottom: 1px solid #444444;
+  padding: 0 0 30px 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: gray;
+  
 `;
 
 const AdDiv = styled.div`
-  margin: 0 350px;
+  margin: 0 365px;
+  width: 950px;
 `;
 
 const ButtonDiv = styled.button`

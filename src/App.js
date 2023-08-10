@@ -10,13 +10,16 @@ import Login from "./pages/Login";
 import MainHeader from "./layouts/header/MainHeader";
 import Footer from "./layouts/Footer";
 import Main from "./pages/Main";
-import JoinFirst from "./pages/JoinFirst";
-import JoinSecond from "./pages/JoinSecond";
 import FirebaseTest from "./pages/FirebaseTest";
 import Player from "./pages/Player";
-import LandingPageHeader from "./layouts/LandingPageHeader/LandingPageHeader";
+
+//리덕스추가
 import { useSelector } from "react-redux";
+import JoinFirst from "./pages/JoinFirst";
+import JoinSecond from "./pages/JoinSecond";
+import JoinThird from "./pages/JoinThird";
 import LandingPage from "./pages/LandingPage";
+import LandingPageHeader from "./layouts/LandingPageHeader/LandingPageHeader";
 
 const App = () => {
   const isLogin = useSelector((state) => state.loginPersistedRudecer.isLogin);
@@ -31,8 +34,9 @@ const App = () => {
         )}
 
         <Route path="login" element={<Login />} />
-        <Route path="join1" element={<JoinFirst />} />
-        <Route path="join2" element={<JoinSecond />} />
+        <Route path="joinFirst" element={<JoinFirst />} />
+        <Route path="joinSecond" element={<JoinSecond />} />
+        <Route path="joinThird" element={<JoinThird />} />
         <Route path="firebase" element={<FirebaseTest />} />
         <Route path="player" element={<Player />} />
       </Route>

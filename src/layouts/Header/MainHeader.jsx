@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/icon/search.svg";
 import { ReactComponent as Bell } from "../../assets/icon/bell.svg";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/store";
 
 const MainHeader = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleScroll = () => {
