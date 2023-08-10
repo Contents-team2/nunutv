@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Wallpaper from "../components/wallpaper/Wallpaper";
 import { useDispatch } from "react-redux";
-import { isLogin, login } from "../store/store";
+import { login } from "../store/store";
 
 const Login = () => {
   const [email, setEmail] = useState("");
