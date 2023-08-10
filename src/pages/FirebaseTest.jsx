@@ -1,9 +1,9 @@
-import { get } from "firebase/database";
 import { auth, storage } from "../firebase/firebase";
+import { get } from "firebase/database";
 import { ref, getDownloadURL } from "firebase/storage";
 import { getRdbRequest, postRdbRequest } from "../utils/firebase.api";
-import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 const FirebaseTest = () => {
   const [user, setUser] = useState({});
@@ -40,39 +40,19 @@ const FirebaseTest = () => {
   //   setUser(data);
   // }, []);
 
-  // realtime database 예제
-  useEffect(() => {
-    // 호출할 url 생성
-    const url = `users/4`;
-    const data = getRdbRequest(url);
-    setUser(data);
-  }, []);
-
   const onClickHandler = () => {
+    // signUp();
+    // localStorage.removeItem("accessToken");
+    // signIn();
     console.log(user);
   };
 
   // //인증 예제
-  // const email = "login@login.login";
+  // const email = "3login@login.login";
   // const password = "loginlogin";
 
   // //가입
-  // createUserWithEmailAndPassword(auth, email, password)
-  //   .then((userCredential) => {
-  //     // Signed in
-  //     const user = userCredential.user;
-  //     // console.log(user);
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     console.log(errorCode, errorMessage)
-  //     // ..
-  //   });
-
-  // // 로그인
-  // signInWithEmailAndPassword(auth, email, password)
+  // const signUp = createUserWithEmailAndPassword(auth, email, password)
   //   .then((userCredential) => {
   //     // Signed in
   //     const user = userCredential.user;
@@ -83,7 +63,25 @@ const FirebaseTest = () => {
   //     const errorCode = error.code;
   //     const errorMessage = error.message;
   //     console.log(errorCode, errorMessage);
+  //     // ..
   //   });
+
+  // // 로그인
+  // const signIn = () => {
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       localStorage.setItem("accessToken", user.accessToken);
+  //       console.log(user);
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       console.log(errorCode, errorMessage);
+  //     });
+  // };
 
   return (
     <>
