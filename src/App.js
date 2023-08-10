@@ -14,6 +14,9 @@ import JoinSecond from "./pages/JoinSecond";
 import JoinThird from "./pages/JoinThird";
 import LandingPage from "./pages/LandingPage";
 import LandingPageHeader from "./layouts/LandingPageHeader/LandingPageHeader"
+import NotFound from "./pages/NotFound";
+import Example, { exampleLoader } from "./pages/Example";
+import Error from "./pages/Error";
 
 
 const App = () => {
@@ -30,6 +33,14 @@ const App = () => {
         <Route path="joinThird" element={<JoinThird />} />
         <Route path="firebase" element={<FirebaseTest />} />
         <Route path="player" element={<Player />} />
+
+
+
+        <Route path="loader" element={<Example />} loader={exampleLoader} />
+        {/* Error page for Specific Path and Sub Path */}
+        <Route path="example" element={<Example />} errorElement={<Error />} />
+        {/* Error page */}
+        <Route path="*" element={<NotFound />} />
 
       </Route >
     )
