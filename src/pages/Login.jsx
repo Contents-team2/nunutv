@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import { auth } from "../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import Wallpaper from "../Components/wallpaper/Wallpaper";
+import Wallpaper from "../components/wallpaper/Wallpaper";
 import { useDispatch } from "react-redux";
 import { login } from "../store/store";
 
