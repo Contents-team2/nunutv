@@ -30,6 +30,7 @@ const MainHeader = () => {
               <Img src="/images/logo/nunutv-logo.png" alt="nunutv" />
               <TitleSpan>NuNu</TitleSpan>
             </LogoBox>
+            <button onClick={logoutHandler}>logout</button>
 
             <NavUl>
               <li>
