@@ -1,7 +1,15 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import LandingPageHeader from '../layouts/LandingPageHeader/LandingPageHeader';
 
 const JoinSecond = () => {
+
+    const navigate = useNavigate();
+
+    function goToJoinThird() {
+        navigate("/joinThird");
+    }
 
     // 초기값 세팅 - 이메일, 비밀번호
     const [email, setEmail] = React.useState("");
@@ -59,8 +67,10 @@ const JoinSecond = () => {
     };
 
     return (
+        <>
+        <LandingPageHeader />
         <BodyDiv>
-            <Form method="POST">
+            <Form>
                 <FormDiv>
                     <StepDiv>2/3단계</StepDiv>
                     <H1>비밀번호를 설정해 멤버십을 시작하세요.</H1>
@@ -96,10 +106,11 @@ const JoinSecond = () => {
                         <CheckInput type="checkbox" />
                         <CheckboxDiv>예, 누누티비 특별 할인 알림 이메일을 보내주세요. (선택 사항)</CheckboxDiv>
                     </CheckboxOuterDiv>
-                    <ButtonDiv type="submit">동의하고 계속</ButtonDiv>
+                    <ButtonDiv onClick={goToJoinThird}>동의하고 계속</ButtonDiv>
                 </FormDiv>
             </Form>
         </BodyDiv>
+        </>
     );
 };
 
@@ -112,6 +123,7 @@ const BodyDiv = styled.div`
 
 const Form = styled.form`
     display: block;
+    margin: 200px 0 50px 100px;
 `;
 
 const FormDiv = styled.div`
