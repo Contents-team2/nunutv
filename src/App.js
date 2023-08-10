@@ -19,29 +19,21 @@ import { useSelector } from "react-redux";
 import LandingPage from "./pages/LandingPage";
 
 const App = () => {
-<<<<<<< HEAD
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<Root />}>
-        {}
-        <Route index element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/join1" element={<JoinFirst />} />
-        <Route path="/join2" element={<JoinSecond />} />
-        <Route path="/firebase" element={<FirebaseTest />} />
-=======
-  const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
+  const isLogin = useSelector((state) => state.loginPersistedRudecer.isLogin);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        {isLogin ? <Route index element={<Main />} /> : <Route index element={<LandingPage />} />}
+        {isLogin ? (
+          <Route index element={<Main />} />
+        ) : (
+          <Route index element={<LandingPage />} />
+        )}
 
         <Route path="login" element={<Login />} />
         <Route path="join1" element={<JoinFirst />} />
         <Route path="join2" element={<JoinSecond />} />
         <Route path="firebase" element={<FirebaseTest />} />
->>>>>>> 237c3fc84ab138923e1249ce834acd38995d4222
         <Route path="player" element={<Player />} />
       </Route>
     )
