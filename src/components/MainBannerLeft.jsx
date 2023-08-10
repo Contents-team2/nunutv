@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { play } from "../store/store"
 import { database } from "../firebase/firebase";
-import { child, get, ref } from "@firebase/database";\
+import { child, get, ref } from "@firebase/database";
 import ModalPortal from "../modal/ModalPortal";
 import DetailModal from "../modal/DetailModal";
 

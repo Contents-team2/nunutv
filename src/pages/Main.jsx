@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MainBanner from "../components/MainBanner";
+import MainBanner from "../Components/MainBanner";
 import { storage } from "../firebase/firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LanguageBox from "../../components/LanguageBox";
+import LanguageBox from "../../Components/LanguageBox";
 
 const LandingPageHeader = () => {
   return (
