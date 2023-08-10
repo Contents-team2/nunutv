@@ -42,8 +42,10 @@ export default App;
 
 
 const Root = () => {
-  const playmode = useSelector(state => state.value)
-  const isLogin = false
+  const playmode = useSelector(state => state.playModePersistedRudecer.value)
+  const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
+  console.log("isLogin", isLogin)
+  console.log("playmode", playmode)
   return (
     <>
       <div>

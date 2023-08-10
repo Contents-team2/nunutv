@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-// import { auth } from "../firebase/firebase";
-// import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Wallpaper from "../components/wallpaper/Wallpaper";
+import { useDispatch } from "react-redux";
+import { isLogin, login } from "../store/store";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const emailChangeHandler = (e) => {
     const inputValue = e.target.value;
@@ -23,26 +26,23 @@ const Login = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // console.log(e);
-    // console.log(e.target.userId.value);
-    // console.log(e.target.password.value);
+
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // // 로그인
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     console.log("userdata", user);
-    //     localStorage.setItem("accessToken", user.accessToken);
-    //     navigate("/");
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorCode, errorMessage);
-    //   });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("userdata", user);
+        localStorage.setItem("accessToken", user.accessToken);
+        dispatch(login(user.accessToken));
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   };
 
   return (
