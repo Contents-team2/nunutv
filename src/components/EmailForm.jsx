@@ -20,7 +20,6 @@ const EmailForm = () => {
 export default EmailForm;
 
 const FormDiv = styled.form`
-  /* background-color: green; */
   width: 100%;
   height: 100%;
   margin-top: 20px;
@@ -31,7 +30,6 @@ const H3Tag = styled.h3`
 `;
 
 const Form = styled.form`
-  /* background-color: aliceblue; */
   margin: 20px auto 0;
 `;
 
@@ -43,12 +41,11 @@ const InputDiv = styled.div`
 `;
 
 const Input = styled.input`
-  background-color: #333;
+  background-color: rgba(22, 22, 22, 0.8);
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 4px;
-  opacity: 0.8;
   padding-left: 20px;
   width: 480px;
   height: 48px;
