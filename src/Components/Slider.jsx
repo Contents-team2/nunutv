@@ -215,13 +215,6 @@ export default function Slider() {
 // carouselwrap hover되면 > : 둘 다 opcapity:0 -> carouselwrap에 hover되면 > opacity:1
 // title, >에 hover되면 모두 보기 > :
 
-const moveRight = keyframes`
-  from{
-  }
-  to {
-  }
-`;
-
 const Container = styled.div`
   margin: 3vw 0;
   position: relative;
