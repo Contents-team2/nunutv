@@ -1,29 +1,25 @@
 import React from "react";
 import Wallpaper from "../components/wallpaper/Wallpaper";
+import EmailForm from "../components/EmailForm";
 import { styled } from "styled-components";
 
 const LandingPage = () => {
   return (
     <>
-      <Wallpaper />
       <LandingPageContainer>
-        <div>
-          <h1>영화, 시리즈 등을 무제한으로</h1>
-          <p>어디서나 자유롭게 시청하세요. 해지는 언제든 가능합니다.</p>
-          <div className='form-container'>
-            <form>
-              <h3>시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</h3>
-              <div>
-                <input type='email' />
-                <button></button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div>
-          <div>
-            <img src='popcorn' alt='popcorn' />
-          </div>
+        <Wallpaper />
+        <FirstDiv>
+          <FirstDiv2>
+            {/* <Paragraph>회원님, 반갑습니다.</Paragraph> */}
+            <H1Tag>영화, 시리즈 등을 무제한으로</H1Tag>
+            <Paragraph>어디서나 자유롭게 시청하세요. 해지는 언제든 가능합니다.</Paragraph>
+            <EmailForm />
+          </FirstDiv2>
+        </FirstDiv>
+        <SecondDiv>
+          <PopcornDiv>
+            <Img src='/images/icon/popcorn.svg' alt='popcorn' />
+          </PopcornDiv>
           <div>
             <p>5,500원이면 만날 수 있는 넷플릭스.</p>
             <p>광고형 스탠다드 멤버십에 가입하세요.</p>
@@ -32,7 +28,7 @@ const LandingPage = () => {
               <img src='right-arrow' alt='right-arrow' />
             </button>
           </div>
-        </div>
+        </SecondDiv>
         <div className='video-component'>
           <div>
             <h2>TV로 즐기세요</h2>
@@ -89,15 +85,7 @@ const LandingPage = () => {
           <div className='faq-container'></div>
           <div className='faq-container'></div>
 
-          <div className='form-container'>
-            <form>
-              <h3></h3>
-              <div>
-                <input type='email' />
-                <button></button>
-              </div>
-            </form>
-          </div>
+          <EmailForm />
         </div>
       </LandingPageContainer>
     </>
@@ -107,6 +95,57 @@ const LandingPage = () => {
 export default LandingPage;
 
 const LandingPageContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  background-color: #000;
+  position: relative;
+  z-index: 0;
+  color: #fff;
+`;
+
+const FirstDiv = styled.div`
+  width: 100%;
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+
+  @media (max-width: 960px) {
+    height: 512px;
+  }
+  @media (max-width: 600px) {
+    height: 480px;
+  }
+`;
+
+const FirstDiv2 = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 8%;
+`;
+
+const H1Tag = styled.h1`
+  font-size: 48px;
+  font-weight: 900;
+`;
+
+const Paragraph = styled.p`
+  font-size: 24px;
+  margin-top: 20px;
+`;
+
+//popcorn
+const SecondDiv = styled.div`
+  background-color: red;
+  height: 160px;
+  /* padding-bottom: 30px */
+`;
+
+const PopcornDiv = styled.div``;
+
+const Img = styled.img`
+  width: 96px;
 `;
