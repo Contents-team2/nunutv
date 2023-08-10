@@ -16,39 +16,6 @@ import LandingPage from "./pages/LandingPage";
 import LandingPageHeader from "./layouts/LandingPageHeader/LandingPageHeader"
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "joinFirst",
-    element: <JoinFirst />,
-  },
-  {
-    path: "joinSecond",
-    element: <JoinSecond />,
-  },
-  {
-    path: "joinThird",
-    element: <JoinThird />,
-  },
-  {
-    path: "firebase",
-    element: <FirebaseTest />
-  },
-  {
-    path: "/player",
-    element: <Player />
-  }
-])
-
-
-
 const App = () => {
   const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
 
@@ -58,8 +25,9 @@ const App = () => {
         {isLogin ? <Route index element={<Main />} /> : <Route index element={<LandingPage />} />}
 
         <Route path="login" element={<Login />} />
-        <Route path="join1" element={<JoinFirst />} />
-        <Route path="join2" element={<JoinSecond />} />
+        <Route path="joinFirst" element={<JoinFirst />} />
+        <Route path="joinSecond" element={<JoinSecond />} />
+        <Route path="joinThird" element={<JoinThird />} />
         <Route path="firebase" element={<FirebaseTest />} />
         <Route path="player" element={<Player />} />
 
