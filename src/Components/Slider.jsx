@@ -245,10 +245,6 @@ const TitleText = styled.h2`
   font-size: 14px;
   margin-left: 2px;
 
-  &:hover${ViewAllArrow} {
-    animation: ${moveRight} 1s;
-  }
-
   &:hover${ViewAllText} {
     opacity: 1;
   }
