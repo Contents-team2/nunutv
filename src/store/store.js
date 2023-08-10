@@ -22,6 +22,7 @@ const playModeSlice = createSlice({
         },
     },
 });
+
 const persistedRudecer = persistReducer(playModePersistConfig, playModeSlice.reducer);
 
 const store = configureStore({

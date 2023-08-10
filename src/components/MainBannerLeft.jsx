@@ -130,6 +130,9 @@ const PlayButton = styled.div`
   background-color: white;
   font-weight: 600;
   padding: 0px 10px;
+  &:hover{
+    background-color: rgba(255, 255, 255,0.6);
+  }
 
 `;
 
@@ -147,4 +150,7 @@ const DetailButton = styled.div`
   margin-left: 1rem;
   color: white;
   padding: 0px 10px;
+  &:hover{
+    background-color: rgba(81, 80, 83, 0.6);
+  }
 `;
