@@ -1,10 +1,23 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { ReactComponent as Search } from '../../assets/icon/search.svg';
-import { ReactComponent as Bell } from '../../assets/icon/bell.svg';
+import { useState, useEffect } from "react";
+
+import { HeaderContainer, HeaderWrapper, LogoLink, Navbar } from "./style";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/store";
 
 const MainHeader = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [bgColor, setBgColor] = useState("transparent");
+  const dispatch = useDispatch();
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+
+    if (scrollY > 200) {
+      setBgColor("#CCCCFF");
+    } else {
+      setBgColor("transparent");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +30,12 @@ const MainHeader = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const logoutHandler = () => {
+    console.log("clicked");
+    localStorage.removeItem("accessToken");
+    dispatch(logout());
+  };
 
   return (
     <>
