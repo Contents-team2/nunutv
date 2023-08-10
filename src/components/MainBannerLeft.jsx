@@ -5,7 +5,7 @@ import { ReactComponent as DetailIcon } from "../assets/icon/detail.svg";
 import { ReactComponent as Logo } from "../assets/icon/logo.svg";
 import { useNavigate } from "react-router-dom";
 //리액트 리덕스 추가
-import { useSelector } from "react-redux";
+
 import { useDispatch } from "react-redux";
 import { play } from "../store/store";
 import { database } from "../firebase/firebase";
@@ -16,8 +16,6 @@ import DetailModal from "../modal/DetailModal";
 const MainBannerLeft = ({ videourl }) => {
   const dispatch = useDispatch();
   // 재생모드 라는 상태 가져오기
-  const playMode = useSelector((state) => state.value);
-  console.log(playMode);
 
   const [isScaleUp, setIsScaleUp] = useState(false);
   const navigate = useNavigate();
@@ -75,20 +73,34 @@ const MainBannerLeft = ({ videourl }) => {
     <Container>
       {isModalOpen && (
         <ModalPortal>
-          <DetailModal ref={modalRef} outsideClose={outsideCloseHandler} onClose={onCloseBtn} data={videosData} />
+          <DetailModal
+            ref={modalRef}
+            outsideClose={outsideCloseHandler}
+            onClose={onCloseBtn}
+            data={videosData}
+            videourl={videourl}
+          />
         </ModalPortal>
       )}
       <MainBannerLeftTitle>
-        <Logo width='100%' height='100%' />
+        <Logo width="100%" height="100%" />
       </MainBannerLeftTitle>
 
       <div style={{ display: "flex", marginBottom: "50px" }}>
         <PlayButton onClick={playButtonHandler}>
-          <PlayIcon width='1.5rem' height='1.5rem' style={{ marginRight: "1rem" }} />
+          <PlayIcon
+            width="1.5rem"
+            height="1.5rem"
+            style={{ marginRight: "1rem" }}
+          />
           <p>재생</p>
         </PlayButton>
         <DetailButton onClick={modalHandler}>
-          <DetailIcon width='1.5rem' height='1.5rem' style={{ marginRight: "1rem" }} />
+          <DetailIcon
+            width="1.5rem"
+            height="1.5rem"
+            style={{ marginRight: "1rem" }}
+          />
           <p>상세 정보</p>
         </DetailButton>
       </div>
@@ -111,9 +123,9 @@ const Container = styled.div`
 const MainBannerLeftTitle = styled.div`
   width: 450px;
   height: 150px;
-  @media (max-width: 710px){
+  @media (max-width: 710px) {
     width: 270px;
-  height: 90px;
+    height: 90px;
   }
 `;
 
@@ -130,7 +142,6 @@ const PlayButton = styled.div`
   background-color: white;
   font-weight: 600;
   padding: 0px 10px;
-
 `;
 
 const DetailButton = styled.div`

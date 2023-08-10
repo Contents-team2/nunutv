@@ -26,7 +26,7 @@ const NameAndPlayBox = (props) => {
         )}
       </S.NameBox>
       <S.PlayBox>
-        <S.PlayButton>
+        <S.PlayButton onClick={props.playButtonHandler}>
           <StyledPlayIcon
             width="current"
             height="current"

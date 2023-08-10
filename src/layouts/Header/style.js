@@ -24,10 +24,14 @@ export const Navbar = styled.div`
   padding: 0 4%;
   position: relative;
   background-color: transparent;
-  transform: background-color .4s;
+  transform: background-color 0.4s;
   z-index: 2;
   height: 2.5625rem;
-  background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 10%,
+    transparent
+  );
 `;
 
 export const LogoLink = styled(Link)`

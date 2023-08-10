@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { storage } from "../../firebase/firebase";
-import { ref, getDownloadURL } from "firebase/storage";
+import React from "react";
 import ReactPlayer from "react-player";
 import * as S from "../Style";
 
 const VideoBox = (props) => {
-  const [url, setUrl] = useState(null);
-
-  const starsRef = ref(storage, "real-video.mp4");
-
-  useEffect(() => {
-    getDownloadURL(starsRef).then((url) => {
-      setUrl(url);
-    }, []);
-  });
-
   return (
     <S.VideoBox>
       <S.ThumbVideo>
         <ReactPlayer
-          url={url}
+          url={props.url}
           width="100%" // 플레이어 크기 (가로)
           height="100%" // 플레이어 크기 (세로)
           loop={true}
