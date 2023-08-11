@@ -58,8 +58,9 @@ const App = () => {
         {isLogin ? <Route index element={<Main />} /> : <Route index element={<LandingPage />} />}
 
         <Route path="login" element={<Login />} />
-        <Route path="join1" element={<JoinFirst />} />
-        <Route path="join2" element={<JoinSecond />} />
+        <Route path="joinFirst" element={<JoinFirst />} />
+        <Route path="joinSecond" element={<JoinSecond />} />
+        <Route path="joinThird" element={<JoinThird />} />
         <Route path="firebase" element={<FirebaseTest />} />
         <Route path="player" element={<Player />} />
 

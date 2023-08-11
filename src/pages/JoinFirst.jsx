@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import LandingPageHeader from "../layouts/LandingPageHeader/LandingPageHeader";
@@ -11,7 +11,11 @@ const JoinFirst = () => {
       navigate("/joinSecond");
   }
 
-
+  const [optionClick, setOptionClick] = useState(null);
+      //핸들러 만들기
+      const handle = (option) => {
+        setOptionClick(option)
+        };
 
   return (
     <>
@@ -28,40 +32,40 @@ const JoinFirst = () => {
           </UlDiv>
         </UpperInfo>
         <RedBox>
-          <PriceOption className="option">광고형 스탠다드</PriceOption>
-          <PriceOption className="option">스탠다드</PriceOption>
-          <PriceOption className="option">프리미엄</PriceOption>
+          <PriceOption onClick={()=>handle('option1')} optionClick={optionClick === 'option1'}>광고형 스탠다드</PriceOption>
+          <PriceOption onClick={()=>handle('option2')} optionClick={optionClick === 'option2'}>스탠다드</PriceOption>
+          <PriceOption onClick={()=>handle('option3')} optionClick={optionClick === 'option3'}>프리미엄</PriceOption>
         </RedBox>
         <TableOuter>
             <TableRow>
               <TableCol1>월 요금</TableCol1>
-              <TableCol2>5,500원</TableCol2>
-              <TableCol3>13,500원</TableCol3>
-              <TableCol4>17,000원</TableCol4>
+              <TableCol2 onClick={()=>handle('option1')} optionClick={optionClick === 'option1'}>5,500원</TableCol2>
+              <TableCol3 onClick={()=>handle('option2')} optionClick={optionClick === 'option2'}>13,500원</TableCol3>
+              <TableCol4 onClick={()=>handle('option3')} optionClick={optionClick === 'option3'}>17,000원</TableCol4>
             </TableRow>
             <TableRow>
               <TableCol1>영상 화질</TableCol1>
-              <TableCol2>매우 좋음</TableCol2>
-              <TableCol3>매우 좋음</TableCol3>
-              <TableCol4>가장 좋음</TableCol4>
+              <TableCol2 onClick={()=>handle('option1')} optionClick={optionClick === 'option1'}>매우 좋음</TableCol2>
+              <TableCol3 onClick={()=>handle('option2')} optionClick={optionClick === 'option2'}>매우 좋음</TableCol3>
+              <TableCol4 onClick={()=>handle('option3')} optionClick={optionClick === 'option3'}>가장 좋음</TableCol4>
             </TableRow>
             <TableRow>
               <TableCol1>해상도</TableCol1>
-              <TableCol2>1080p</TableCol2>
-              <TableCol3>1080p</TableCol3>
-              <TableCol4>4K+HDR</TableCol4>
+              <TableCol2 onClick={()=>handle('option1')} optionClick={optionClick === 'option1'}>1080p</TableCol2>
+              <TableCol3 onClick={()=>handle('option2')} optionClick={optionClick === 'option2'}>1080p</TableCol3>
+              <TableCol4 onClick={()=>handle('option3')} optionClick={optionClick === 'option3'}>4K+HDR</TableCol4>
             </TableRow>
             <TableRow>
               <TableCol1>TV, 컴퓨터, 스마트폰, 태블릿으로 시청</TableCol1>
-              <TableCol2>Yes</TableCol2>
-              <TableCol3>Yes</TableCol3>
-              <TableCol4>Yes</TableCol4>
+              <TableCol2 onClick={()=>handle('option1')} optionClick={optionClick === 'option1'}>Yes</TableCol2>
+              <TableCol3 onClick={()=>handle('option2')} optionClick={optionClick === 'option2'}>Yes</TableCol3>
+              <TableCol4 onClick={()=>handle('option3')} optionClick={optionClick === 'option3'}>Yes</TableCol4>
             </TableRow>
             <TableRow>
               <TableCol1>저장</TableCol1>
-              <TableCol2>No</TableCol2>
-              <TableCol3>Yes</TableCol3>
-              <TableCol4>Yes</TableCol4>
+              <TableCol2 onClick={()=>handle('option1')} optionClick={optionClick === 'option1'}>No</TableCol2>
+              <TableCol3 onClick={()=>handle('option2')} optionClick={optionClick === 'option2'}>Yes</TableCol3>
+              <TableCol4 onClick={()=>handle('option3')} optionClick={optionClick === 'option3'}>Yes</TableCol4>
             </TableRow>
         </TableOuter>
         <AdDiv>광고형 멤버십에는 몇 가지 차이점이 있습니다. 광고형 멤버십에 대해 알아보세요.</AdDiv>
@@ -118,20 +122,21 @@ const RedBox = styled.label`
   width: 1300px;
 `;
 
-const PriceOption = styled.button`
+const PriceOption = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 30px;
   padding: 25px 25px;
-  width: 135px;
-  height: 135px;
-  background-color: rgb(255,0,0,0.6);
+  width: 85px;
+  height: 85px;
+  background-color: ${({optionClick}) => optionClick ? 'rgb(255,0,0)' : 'rgb(255,0,0,0.6)'};
   color: white;
   font-size: 20px;
   text-align: center;
   border-radius: 3px;
   border: none;
+  transition: background-color .3s;
 `;
 
 const TableOuter = styled.table`
@@ -161,7 +166,7 @@ const TableCol2 = styled.td`
   text-align: center;
   font-weight: bold;
   font-size: 18px;
-  color: gray;
+  color: ${({optionClick}) => optionClick ? 'red' : 'gray'};
 `;
 
 const TableCol3 = styled.td`
@@ -171,7 +176,7 @@ const TableCol3 = styled.td`
   text-align: center;
   font-weight: bold;
   font-size: 18px;
-  color: gray;
+  color: ${({optionClick}) => optionClick ? 'red' : 'gray'};
 `;
 
 const TableCol4 = styled.td`
@@ -180,7 +185,7 @@ const TableCol4 = styled.td`
   text-align: center;
   font-weight: bold;
   font-size: 18px;
-  color: gray;
+  color: ${({optionClick}) => optionClick ? 'red' : 'gray'};
   
 `;
 

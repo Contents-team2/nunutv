@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
-
-import { HeaderContainer, HeaderWrapper, LogoLink, Navbar } from "./style";
-import { ReactComponent as Logo } from "../../assets/logo.svg";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { ReactComponent as Search } from "../../assets/icon/search.svg";
+import { ReactComponent as Bell } from "../../assets/icon/bell.svg";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/store";
 
 const MainHeader = () => {
-  const [bgColor, setBgColor] = useState("transparent");
+  const [scrollPosition, setScrollPosition] = useState(0);
   const dispatch = useDispatch();
-
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-
-    if (scrollY > 200) {
-      setBgColor("#CCCCFF");
-    } else {
-      setBgColor("transparent");
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,39 +32,42 @@ const MainHeader = () => {
       <HeaderContainer scrollPosition={scrollPosition}>
         <HeaderWrapper>
           <HeaderContents scrollPosition={scrollPosition}>
-            <LogoBox href="/">
+            <LogoBox href='/'>
               <Img src='/images/logo/nunutv-logo.png' alt='nunutv' />
               <TitleSpan>NuNu</TitleSpan>
             </LogoBox>
-    
+            <button onClick={logoutHandler}>logout</button>
+
             <NavUl>
               <li>
-                <a href="/">메뉴</a>
+                <a href='/'>메뉴</a>
                 {/* <div style={{opacity: '1', transitionDuration: '150ms'}}></div> */}
               </li>
 
               <li>
-                <a href="/" className="current">홈</a>
+                <a href='/' className='current'>
+                  홈
+                </a>
               </li>
 
               <li>
-                <a href="/">시리즈</a>
+                <a href='/'>시리즈</a>
               </li>
 
               <li>
-                <a href="/">영화</a>
+                <a href='/'>영화</a>
               </li>
 
               <li>
-                <a href="/">NEW!요즘 대세 콘텐츠</a>
+                <a href='/'>NEW!요즘 대세 콘텐츠</a>
               </li>
 
               <li>
-                <a href="/">내가 찜한 콘텐츠</a>
+                <a href='/'>내가 찜한 콘텐츠</a>
               </li>
 
               <li>
-                <a href="/">언어별로 찾아보기</a>
+                <a href='/'>언어별로 찾아보기</a>
               </li>
             </NavUl>
 
@@ -86,9 +79,9 @@ const MainHeader = () => {
                   </button>
                 </SearchBox>
               </div>
-              
-              <div className="show-kids">
-                <a href="/">키즈</a>
+
+              <div className='show-kids'>
+                <a href='/'>키즈</a>
               </div>
 
               <div>
@@ -104,7 +97,7 @@ const MainHeader = () => {
               <div>
                 <AccountMenu>
                   <AccountDropDown>
-                    <a href="/">사진</a>
+                    <a href='/'>사진</a>
 
                     <span></span>
 
@@ -130,8 +123,8 @@ const HeaderContainer = styled.header`
   width: 100%;
   max-width: 100vw;
   z-index: 1;
-  transition: background-color .4s;
-  background-color: ${props => props.scrollPosition > 0 ? '#000' : 'transparent'};
+  transition: background-color 0.4s;
+  background-color: ${(props) => (props.scrollPosition > 0 ? "#000" : "transparent")};
 `;
 
 const HeaderWrapper = styled.div`
@@ -143,18 +136,18 @@ const HeaderWrapper = styled.div`
   background: transparent;
 `;
 
-const HeaderContents =styled.div`
+const HeaderContents = styled.div`
   align-items: center;
   display: flex;
   font-size: 1.2rem;
   padding: 1rem;
   position: relative;
-  transition: background-color .4s;
+  transition: background-color 0.4s;
   z-index: 2;
-  background-color: ${props => props.scrollPosition > 0 ? '#000' : 'transparent'};;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, .7) 10%, transparent);
+  background-color: ${(props) => (props.scrollPosition > 0 ? "#000" : "transparent")};
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
   height: 41px;
-  
+
   @media (min-width: 75rem) {
     font-size: 14px;
   }
@@ -225,8 +218,8 @@ const NavUl = styled.ul`
     }
 
     div {
-      background-color: rgba(0, 0, 0, .9);
-      border: 1px solid hsla(0, 0%, 100%, .15);
+      background-color: rgba(0, 0, 0, 0.9);
+      border: 1px solid hsla(0, 0%, 100%, 0.15);
       box-sizing: border-box;
       color: #fff;
       cursor: default;
@@ -239,7 +232,7 @@ const NavUl = styled.ul`
     }
   }
 
-  li:nth-child(n+2) {
+  li:nth-child(n + 2) {
     @media (max-width: 55.3125rem) {
       display: none;
     }
@@ -250,11 +243,11 @@ const NavUl = styled.ul`
       display: flex;
       height: 100%;
       position: relative;
-      transition: color .4s;
+      transition: color 0.4s;
     }
   }
 
-  li:nth-child(n+3) {
+  li:nth-child(n + 3) {
     a {
       &:hover {
         color: #b3b3b3;
@@ -326,7 +319,7 @@ const Notification = styled.span`
     border: none;
     font-size: 1.5em;
     line-height: 1;
-    margin-top: .2em;
+    margin-top: 0.2em;
     padding: 2px 6px 3px;
     position: relative;
   }
@@ -337,15 +330,15 @@ const Notification = styled.span`
     border-radius: 100%;
     color: #fff;
     display: inline-block;
-    font-size: .5em;
+    font-size: 0.5em;
     font-weight: 500;
     line-height: 1;
     min-width: 1em;
-    padding: .3em;
+    padding: 0.3em;
     text-align: center;
     position: absolute;
-    right: -.1em;
-    top: -.25em;
+    right: -0.1em;
+    top: -0.25em;
     z-index: 2;
   }
 `;
@@ -378,13 +371,13 @@ const AccountDropDown = styled.div`
     border-width: 5px 5px 0;
     height: 0;
     margin-left: 10px;
-    transition: transform 367ms cubic-bezier(.21, 0, .07, 1);
+    transition: transform 367ms cubic-bezier(0.21, 0, 0.07, 1);
     width: 0;
   }
 
   div {
-    background-color: rgba(0, 0, 0, .9);
-    border: 1px solid hsla(0, 0%, 100%, .15);
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid hsla(0, 0%, 100%, 0.15);
     box-sizing: border-box;
     color: #fff;
     cursor: default;
