@@ -21,16 +21,18 @@ export default function Top10Card(props) {
         isCardHovered={isCardHovered}
         onMouseLeave={cardMouseLeaveHandler}
       >
-        <CarouselCardImgContainer onMouseEnter={cardMouseEnterHandler}>
-          <CarouselCardTop10Img src={props.img} alt={props.alt} />
-          <CarouselCardImg src={props.src} alt={props.alt} />
-        </CarouselCardImgContainer>
-        <CarouselText show={isCardHovered}>설명</CarouselText>
+        <CarouselCardImagesContainer>
+          <CarouselCardImgContainer onMouseEnter={cardMouseEnterHandler}>
+            <CarouselCardTop10Img src={props.img} alt={props.alt} />
+            <CarouselCardImg src={props.src} alt={props.alt} />
+          </CarouselCardImgContainer>
+        </CarouselCardImagesContainer>
       </CarouselCard>
     </CarouselCardContainer>
   );
 }
 const CarouselCardContainer = styled.div`
+  margin-right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,52 +40,40 @@ const CarouselCardContainer = styled.div`
 
 const CarouselCard = styled.div`
   position: relative;
-  max-width: 114px;
-  min-width: 114px;
+  max-width: 228px;
+  min-width: 228px;
   height: 162px;
-  transition: all 0.3s 1.5s linear;
-  &:hover {
-    z-index: 999;
-    transform: ${(props) => (props.isCardHovered ? "scale(1.5)" : "none")};
-  }
 `;
 
 const CarouselCardImgContainer = styled.div`
-  height: 100%;
+  width: 228px;
+  height: 162px;
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CarouselCardImagesContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CarouselCardImg = styled.img`
   max-width: 114px;
   min-width: 114px;
-  height:162px
+  height: 162px;
   padding-right: 5px;
   border-radius: 3px;
   cursor: pointer;
-
-  &:hover {
-    border-radius: 3px 3px 0 0;
-  }
 `;
 
 const CarouselCardTop10Img = styled.img`
-  max-width: 114p;
-  min-width: 114px;
-  border-radius: 3px;
+  max-width: 100p;
+  min-width: 100px;
+  height: 150px;
   cursor: pointer;
-`;
-
-const CarouselText = styled.div`
-  width: 100%;
-  height: 50%;
-  position: absolute;
-  left: 50%;
-  top: 67.5%;
-  transform: translateX(-50%);
-  background-color: black;
-  border-radius: 0px 0px 3px 3px;
-  opacity: ${(props) => (props.show ? "0.7" : "0")};
-  color: white;
-  transition: opacity 0.3s 1.5s ease-in-out;
+  left: 100%;
 `;

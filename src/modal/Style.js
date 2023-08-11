@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Box = styled.div`
+  top: 0%;
   position: fixed;
   border-radius: 1rem;
   margin-top: 2rem;
@@ -114,9 +115,7 @@ export const LikeBox = styled.div``;
 
 export const PlayBtnBox = styled.div``;
 
-export const ModalBtnBox = styled.div`
-  right: 0;
-`;
+export const ModalBtnBox = styled.div``;
 
 const ExpandAnimation = keyframes`
   from {
