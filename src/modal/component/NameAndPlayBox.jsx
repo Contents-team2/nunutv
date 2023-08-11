@@ -1,7 +1,7 @@
-import React from "react";
-import logo from "../logo.svg";
+import React, { useEffect, useState } from "react";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase/firebase";
 import * as S from "../Style";
-import { ReactComponent as PlayIcon } from "../../assets/icon/play.svg";
 import AddLikeBtn from "./AddLikeBtn";
 import { styled } from "styled-components";
 
@@ -19,15 +19,29 @@ const StyledPlayIcon = styled.svg`
 `;
 
 const NameAndPlayBox = (props) => {
+  const [logoUrl, setLogoUrl] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = props.logo;
+
+      try {
+        const url = await getDownloadURL(ref(storage, data));
+        setLogoUrl(url);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [props.logo]);
+  console.log(logoUrl);
   return (
     <S.NameAndPlayBox>
       <S.NameBox>
-        {props.name === "최애의 아이" && (
-          <S.Logo src={logo} alt="로고"></S.Logo>
-        )}
+        <S.Logo src={logoUrl} alt="로고"></S.Logo>
       </S.NameBox>
       <S.PlayBox>
-        <S.PlayButton>
+        <S.PlayButton onClick={props.playButtonHandler}>
           <StyledPlayIcon
             width="current"
             height="current"

@@ -25,12 +25,16 @@ import Error from "./pages/Error";
 
 
 const App = () => {
-  const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
+  const isLogin = useSelector((state) => state.loginPersistedRudecer.isLogin);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        {isLogin ? <Route index element={<Main />} /> : <Route index element={<LandingPage />} />}
+        {isLogin ? (
+          <Route index element={<Main />} />
+        ) : (
+          <Route index element={<LandingPage />} />
+        )}
 
         <Route path="login" element={<Login />} />
         <Route path="joinFirst" element={<JoinFirst />} />
@@ -49,7 +53,7 @@ const App = () => {
 
       </Route >
     )
-  )
+  );
 
   return (
     <>
@@ -61,24 +65,18 @@ const App = () => {
 
 export default App;
 
-
 const Root = () => {
-  const playmode = useSelector(state => state.playModePersistedRudecer.value)
-  const isLogin = useSelector(state => state.loginPersistedRudecer.isLogin)
-  console.log("isLogin", isLogin)
-  console.log("playmode", playmode)
+  const playmode = useSelector((state) => state.playModePersistedRudecer.value);
+  const isLogin = useSelector((state) => state.loginPersistedRudecer.isLogin);
+  console.log("isLogin", isLogin);
+  console.log("playmode", playmode);
   return (
     <>
-      <div>
-        {isLogin ? <MainHeader /> : <LandingPageHeader />}
-
-      </div>
+      <div>{isLogin ? <MainHeader /> : <LandingPageHeader />}</div>
       <div>
         <Outlet />
       </div>
-      <div>
-        {playmode === "start" ? null : <Footer />}
-      </div>
+      <div>{playmode === "start" ? null : <Footer />}</div>
     </>
-  )
-}
+  );
+};

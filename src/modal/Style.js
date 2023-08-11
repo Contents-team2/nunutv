@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { keyframes, styled, css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -38,7 +38,8 @@ export const Display = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 20rem;
+  width: 15rem;
+
   @media (max-width: 1023px) {
     width: 10rem;
   }
@@ -48,8 +49,10 @@ export const Logo = styled.img`
 `;
 
 export const NameAndPlayBox = styled.div`
+  width: 20rem;
+  height: 20rem;
   position: absolute;
-  margin-top: 17rem;
+  margin-top: 14rem;
   margin-left: 4rem;
   color: black;
   @media (max-width: 1023px) {
@@ -103,6 +106,61 @@ export const PlayButton = styled.div`
     height: 1rem;
     font-size: 0.3rem;
   }
+`;
+
+export const AddBox = styled.div``;
+
+export const LikeBox = styled.div``;
+
+export const PlayBtnBox = styled.div``;
+
+export const ModalBtnBox = styled.div`
+  right: 0;
+`;
+
+const ExpandAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+`;
+
+const CollapseAnimation = keyframes`
+  from {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  to {
+    opacity: 0.5;
+    transform: scaleX(0);
+  }
+`;
+
+export const LikeBoxCollection = styled.div`
+  top: 68%;
+  left: 49%;
+  position: absolute;
+  background-color: #181818;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transform-origin: center left right;
+  transform: translate(-50%, -50%);
+  animation: ${(props) =>
+    props.show
+      ? css`
+          ${ExpandAnimation} 0.5s ease-out forwards
+        `
+      : css`
+          ${CollapseAnimation} 0.5s ease-out forwards
+        `};
 `;
 
 export const VideoBox = styled.div`
@@ -175,6 +233,11 @@ export const MuteBtn = styled.img`
   position: absolute;
   cursor: pointer;
   transition: all 0.2s linear;
+  color: grey;
+  path {
+    fill: red;
+    stroke: red;
+  }
   &:hover {
     transform: scale(1.2);
   }
@@ -332,12 +395,13 @@ export const ListCardWrapper = styled.div`
   margin-right: 3rem;
   border-bottom: 0.1rem solid #333333;
   border-radius: 0.25rem;
+  cursor: pointer;
 
   &:hover {
     background-color: #333333;
   }
   @media (max-width: 1023px) {
-    height: 5rem;
+    height: 8rem;
     margin-left: 1rem;
     margin-right: 1rem;
   }
