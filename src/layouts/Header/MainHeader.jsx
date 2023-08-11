@@ -122,7 +122,7 @@ const HeaderContainer = styled.header`
   min-height: fit-content;
   width: 100%;
   max-width: 100vw;
-  z-index: 1;
+  z-index: 10;
   transition: background-color 0.4s;
   background-color: ${(props) => (props.scrollPosition > 0 ? "#000" : "transparent")};
 `;

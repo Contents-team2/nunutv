@@ -9,22 +9,19 @@ const VideoList = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = [1, 2, 3, 4];
+      const data = props.data.episodes;
       const dbData = [];
-      const storageRef = ref(storage);
-      const imagesRef = ref(storageRef, "images");
 
       for (const v of data) {
         try {
-          const url = await getDownloadURL(ref(imagesRef, `thumbs${v}.jpg`));
+          const url = await getDownloadURL(ref(storage, v.thumb));
           dbData.push(url);
         } catch (error) {
           console.error(error);
         }
       }
 
-      const seriesData = props.data.series;
-      const updatedData = seriesData.map((obj, index) => {
+      const updatedData = data.map((obj, index) => {
         return { ...obj, thumbs: dbData[index] };
       });
 
@@ -32,7 +29,7 @@ const VideoList = (props) => {
     };
 
     fetchData();
-  }, [props.data.series]);
+  }, [props.data.episodes]);
 
   console.log(newData);
 

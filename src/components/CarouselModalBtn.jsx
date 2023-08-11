@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import * as S from "../Style";
+import * as S from "../modal/Style";
 
 const StyledAddIcon = styled.svg`
-  width: 2.5rem;
+  width: 1.5rem;
   margin-left: 1rem;
   cursor: pointer;
   fill-opacity: 0.1;
@@ -24,7 +24,7 @@ const StyledAddIcon = styled.svg`
 `;
 
 const StyledLikeIcon = styled.svg`
-  width: 2rem;
+  width: 1.3rem;
   margin-left: 1rem;
   cursor: pointer;
   fill-opacity: 0.1;
@@ -44,7 +44,28 @@ const StyledLikeIcon = styled.svg`
   }
 `;
 
-const AddLikeBtn = () => {
+const StyledModalIcon = styled.svg`
+  width: 1.5rem;
+  margin-left: 4rem;
+  cursor: pointer;
+  fill-opacity: 0.1;
+  fill: grey;
+  stroke: grey;
+  transition: all 0.1s linear;
+  &:hover {
+    stroke: white;
+  }
+  @media (max-width: 1023px) {
+    width: 1.5rem;
+    margin-left: 0.7rem;
+  }
+  @media (max-width: 767px) {
+    width: 1rem;
+    margin-left: 0.4rem;
+  }
+`;
+
+const CarouselModalBtn = (props) => {
   return (
     <>
       <S.AddBox>
@@ -79,8 +100,28 @@ const AddLikeBtn = () => {
           />
         </StyledLikeIcon>
       </S.LikeBox>
+      <S.ModalBtnBox>
+        <StyledModalIcon
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+          onClick={() => {
+            props.modalIdxHandler(props.id);
+            props.modalHandler();
+          }}
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+          />
+        </StyledModalIcon>
+      </S.ModalBtnBox>
     </>
   );
 };
 
-export default AddLikeBtn;
+export default CarouselModalBtn;

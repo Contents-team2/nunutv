@@ -2,14 +2,20 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { useNavigate } from "react-router-dom";
 import LandingPageHeader from '../layouts/LandingPageHeader/LandingPageHeader';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase/firebase';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/store';
+import { postRdbRequest } from '../utils/firebase.api';
 
 const JoinSecond = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    function goToJoinThird() {
-        navigate("/joinThird");
-    }
+    // function goToJoinThird() {
+    //     navigate("/joinThird");
+    // }
 
     // 초기값 세팅 - 이메일, 비밀번호
     const [email, setEmail] = React.useState("");
@@ -66,11 +72,39 @@ const JoinSecond = () => {
         }
     };
 
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            localStorage.setItem("accessToken", user.accessToken);
+            dispatch(login(user.accessToken));
+
+            const date = new Date();
+            const id = date.getTime();
+            const url = "users/"+id;
+            const data = {email, id, agreed: true, plan: 2}; /**? */
+            postRdbRequest(url, data);
+            navigate("/joinThird");
+            })
+            .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+
+            });
+    };
+
     return (
         <>
-        <LandingPageHeader />
         <BodyDiv>
-            <Form>
+            <Form onSubmit={onSubmitHandler}>
                 <FormDiv>
                     <StepDiv>2/3단계</StepDiv>
                     <H1>비밀번호를 설정해 멤버십을 시작하세요.</H1>
@@ -106,7 +140,7 @@ const JoinSecond = () => {
                         <CheckInput type="checkbox" />
                         <CheckboxDiv>예, 누누티비 특별 할인 알림 이메일을 보내주세요. (선택 사항)</CheckboxDiv>
                     </CheckboxOuterDiv>
-                    <ButtonDiv onClick={goToJoinThird}>동의하고 계속</ButtonDiv>
+                    <ButtonDiv>동의하고 계속</ButtonDiv>
                 </FormDiv>
             </Form>
         </BodyDiv>
