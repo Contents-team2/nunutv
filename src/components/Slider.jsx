@@ -1,43 +1,37 @@
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Card from "./CarouselCard";
 import Top10Card from "./CarouselCardTop10";
-import one from "../image/1.svg";
-import two from "../image/2.svg";
-import three from "../image/3.svg";
-import four from "../image/4.svg";
-import five from "../image/5.svg";
-import six from "../image/6.svg";
-import seven from "../image/7.svg";
-import eight from "../image/8.svg";
-import nine from "../image/9.svg";
-import ten from "../image/10.svg";
+import one from "../image/1.png";
+import two from "../image/2.png";
+import three from "../image/3.png";
+import four from "../image/4.png";
+import five from "../image/5.png";
+import six from "../image/6.png";
+import seven from "../image/7.png";
+import eight from "../image/8.png";
+import nine from "../image/9.png";
+import ten from "../image/10.png";
+import { database } from "../firebase/firebase";
+import { child, get, ref } from "@firebase/database";
+import ModalPortal from "../modal/ModalPortal";
+import DetailModal from "../modal/DetailModal";
 
 export default function Slider() {
-  // const [isCarouselHovered, setIsCarouselHovered] = useState(false);
-
-  // const carouselMouseInHandler = () => {
-  //   setIsCarouselHovered(true);
-  // };
-
-  // const carouselMouseOutHandler = () => {
-  //   setIsCarouselHovered(false);
-  // };
-
   const data = [
     {
       id: 0,
-      name: "그해 우리는",
-      title: "힐링되는 TV 프로그램",
-      image:
-        "https://occ-0-1361-1360.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABfbqGcl5QMiA0yXZ1dau91UMXICLnD9m4nAX6H4aFau_ganarGhUXIctelw10GymgIjlPWVJT_RaIeR4yZGVIxv6mnZMXyqZjb0.webp?r=831",
-    },
-    {
-      id: 1,
       name: "이상한 변호사 우영우",
       title: "힐링되는 TV 프로그램",
       image:
         'https://occ-0-1361-1360.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABUjhVfd-Yn41vZJ84pYU1RL26UPOaKMS958-HKXvvU0T4kU8xcQX_iDdCVBmbpaVFW6Aseyul65XVcAX10hAE518L4qlTQK1DHI.webp?r=691"',
+    },
+    {
+      id: 1,
+      name: "그해 우리는",
+      title: "힐링되는 TV 프로그램",
+      image:
+        "https://occ-0-1361-1360.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABfbqGcl5QMiA0yXZ1dau91UMXICLnD9m4nAX6H4aFau_ganarGhUXIctelw10GymgIjlPWVJT_RaIeR4yZGVIxv6mnZMXyqZjb0.webp?r=831",
     },
     {
       id: 2,
@@ -62,7 +56,7 @@ export default function Slider() {
     },
     {
       id: 5,
-      name: "나의 아저씨씨",
+      name: "나의 아저씨",
       title: "힐링되는 TV 프로그램",
       image:
         "https://occ-0-1361-1360.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABUgC8WWYMGvUA8NfmaxwQugf7H7uiGlkBnRgA1M4YQExtDW9D9IOweRPyGGheXlTWSOOoFlTyrT0ytZHN9L4GwGMbyCw0sQClBo.webp?r=7ad",
@@ -649,7 +643,7 @@ export default function Slider() {
       id: 3,
       name: "돌싱글즈",
       title: "오늘 대한민국의 TOP 10 시리즈",
-      numberimg: 1,
+      numberimg: four,
       image:
         "https://occ-0-1361-1360.1.nflxso.net/dnm/api/v6/WNk1mr9x_Cd_2itp6pUM7-lXMJg/AAAABTkEv-tBzZNxjYGAYp6NT_cxlbiVwROVqQZ6j15mJEqsZKt8CDRG1tujICEppsj3vB5T0ZEo-eVpdwlGfs_NQe1IW0JY0qSKoP71PqfpJSdsWrwW3qMRKjSc9rvHj9iyHsFxN7RoliS4B1ettAV-7YuQ0qHh2h8hHG-KBhPwfJp9qnIw7HrZCm1dWV3YX4MApVQBIok2CcExL7dIVa10d4CICRL65-SRg3FDAUOXziZDtFgZgEGmphdlyZrWTapzoTiNxsX6DvdreReXnchcxUIGr1EuXHM0.webp?r=235",
     },
@@ -704,10 +698,13 @@ export default function Slider() {
   ];
 
   const scrollRef = useRef(null);
+  const scrollRef1 = useRef(null);
+  const scrollRef2 = useRef(null);
 
   const nextBtnClickHandler = () => {
     const maxScrollLeft =
       scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+
     if (
       scrollRef.current.scrollLeft + scrollRef.current.clientWidth <
       maxScrollLeft
@@ -724,10 +721,53 @@ export default function Slider() {
     } else {
       scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
     }
+    console.log(scrollRef);
+  };
+
+  const nextBtnClickHandler1 = () => {
+    const maxScrollLeft =
+      scrollRef1.current.scrollWidth - scrollRef1.current.clientWidth;
+    if (
+      scrollRef1.current.scrollLeft + scrollRef1.current.clientWidth <
+      maxScrollLeft
+    ) {
+      scrollRef1.current.scrollTo({
+        left: scrollRef1.current.scrollLeft + scrollRef1.current.clientWidth,
+        behavior: "smooth",
+      });
+    } else if (scrollRef1.current.scrollLeft < maxScrollLeft) {
+      scrollRef1.current.scrollTo({
+        left: maxScrollLeft,
+        behavior: "smooth",
+      });
+    } else {
+      scrollRef1.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  };
+
+  const nextBtnClickHandler2 = () => {
+    const maxScrollLeft =
+      scrollRef2.current.scrollWidth - scrollRef2.current.clientWidth;
+    if (
+      scrollRef2.current.scrollLeft + scrollRef2.current.clientWidth <
+      maxScrollLeft
+    ) {
+      scrollRef2.current.scrollTo({
+        left: scrollRef2.current.scrollLeft + scrollRef2.current.clientWidth,
+        behavior: "smooth",
+      });
+    } else if (scrollRef2.current.scrollLeft < maxScrollLeft) {
+      scrollRef2.current.scrollTo({
+        left: maxScrollLeft,
+        behavior: "smooth",
+      });
+    } else {
+      scrollRef2.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
   };
 
   const prevBtnClickHandler = () => {
-    if (scrollRef.current.scrollLeft > scrollRef.current.clientWidth) {
+    if (scrollRef.current.scrollLeft > 0) {
       scrollRef.current.scrollTo({
         left: scrollRef.current.scrollLeft - scrollRef.current.clientWidth,
         behavior: "smooth",
@@ -745,17 +785,107 @@ export default function Slider() {
         behavior: "smooth",
       });
     }
+    console.log("scrollLeft", scrollRef.current.scrollLeft);
+    console.log("clientWidth", scrollRef.current.clientWidth);
+  };
+
+  const prevBtnClickHandler1 = () => {
+    if (scrollRef1.current.scrollLeft > 0) {
+      scrollRef1.current.scrollTo({
+        left: scrollRef1.current.scrollLeft - scrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
+    } else if (scrollRef1.current.scrollLeft > 0) {
+      scrollRef.current.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const lastSlidePosition =
+        scrollRef1.current.scrollWidth - scrollRef1.current.clientWidth;
+      scrollRef1.current.scrollTo({
+        left: lastSlidePosition,
+        behavior: "smooth",
+      });
+    }
+  };
+  const prevBtnClickHandler2 = () => {
+    if (scrollRef2.current.scrollLeft > 0) {
+      scrollRef2.current.scrollTo({
+        left: scrollRef2.current.scrollLeft - scrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
+    } else if (scrollRef2.current.scrollLeft > 0) {
+      scrollRef.current.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const lastSlidePosition =
+        scrollRef2.current.scrollWidth - scrollRef2.current.clientWidth;
+      scrollRef2.current.scrollTo({
+        left: lastSlidePosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const [videosData, setVideosData] = useState({});
+
+  useEffect(() => {
+    get(child(ref(database), "/videos"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setVideosData(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [modalIdx, setModalIdx] = useState(0);
+
+  const modalRef = useRef();
+
+  const outsideCloseHandler = (event) => {
+    if (modalRef.current === event.target) setIsModalOpen(false);
+  };
+
+  const modalIdxHandler = (id) => {
+    setModalIdx(id);
+  };
+
+  const modalHandler = () => {
+    setScrollPosition(window.scrollY);
+    setIsModalOpen(true);
+  };
+
+  const onCloseBtn = () => {
+    setIsModalOpen(false);
+    window.scrollTo(0, scrollPosition);
   };
 
   return (
     <NextflixContainer>
+      {isModalOpen && (
+        <ModalPortal>
+          <DetailModal
+            ref={modalRef}
+            outsideClose={outsideCloseHandler}
+            onClose={onCloseBtn}
+            data={videosData[modalIdx]}
+            videourl={videosData[modalIdx].video}
+          />
+        </ModalPortal>
+      )}
       <Container1>
         <Title>
           <TitleText>힐링되는 TV 프로그램</TitleText>
-          <ViewAll>
-            <ViewAllArrow>&gt;</ViewAllArrow>
-            <ViewAllText>모두 보기</ViewAllText>
-          </ViewAll>
         </Title>
         <LeftScrollButton onClick={prevBtnClickHandler}>
           <ArrowIcon>&lang;</ArrowIcon>
@@ -764,26 +894,29 @@ export default function Slider() {
           <ArrowIcon>&rang;</ArrowIcon>
         </RightScrollButton>
         <Carousel ref={scrollRef}>
-          {data.map((el) => (
-            <Card key={el.id} src={el.image} alt={el.name} />
+          {data.map((el, idx) => (
+            <Card
+              id={idx + 1}
+              key={el.id}
+              src={el.image}
+              alt={el.name}
+              modalHandler={modalHandler}
+              modalIdxHandler={modalIdxHandler}
+            />
           ))}
         </Carousel>
       </Container1>
       <Container2>
         <Title>
           <TitleText>믿고 보는 한국 드라마 작가 컬렉션</TitleText>
-          <ViewAll>
-            <ViewAllArrow>&gt;</ViewAllArrow>
-            <ViewAllText>모두 보기</ViewAllText>
-          </ViewAll>
         </Title>
-        <LeftScrollButton onClick={prevBtnClickHandler}>
+        <LeftScrollButton onClick={prevBtnClickHandler1}>
           <ArrowIcon>&lang;</ArrowIcon>
         </LeftScrollButton>
-        <RightScrollButton onClick={nextBtnClickHandler}>
+        <RightScrollButton onClick={nextBtnClickHandler1}>
           <ArrowIcon>&rang;</ArrowIcon>
         </RightScrollButton>
-        <Carousel ref={scrollRef}>
+        <Carousel ref={scrollRef1}>
           {data2.map((el) => (
             <Card key={el.id} src={el.image} alt={el.name} />
           ))}
@@ -792,18 +925,14 @@ export default function Slider() {
       <Container3>
         <Title>
           <TitleText>다시보기 추천 콘텐츠</TitleText>
-          <ViewAll>
-            <ViewAllArrow>&gt;</ViewAllArrow>
-            <ViewAllText>모두 보기</ViewAllText>
-          </ViewAll>
         </Title>
-        <LeftScrollButton onClick={prevBtnClickHandler}>
+        <LeftScrollButton onClick={prevBtnClickHandler2}>
           <ArrowIcon>&lang;</ArrowIcon>
         </LeftScrollButton>
-        <RightScrollButton onClick={nextBtnClickHandler}>
+        <RightScrollButton onClick={nextBtnClickHandler2}>
           <ArrowIcon>&rang;</ArrowIcon>
         </RightScrollButton>
-        <Carousel ref={scrollRef}>
+        <Carousel ref={scrollRef2}>
           {data3.map((el) => (
             <Card key={el.id} src={el.image} alt={el.name} />
           ))}
@@ -812,18 +941,14 @@ export default function Slider() {
       <Container4>
         <Title>
           <TitleText>보고 또 봐도 좋은 명작</TitleText>
-          <ViewAll>
-            <ViewAllArrow>&gt;</ViewAllArrow>
-            <ViewAllText>모두 보기</ViewAllText>
-          </ViewAll>
         </Title>
-        <LeftScrollButton onClick={prevBtnClickHandler}>
+        <LeftScrollButton>
           <ArrowIcon>&lang;</ArrowIcon>
         </LeftScrollButton>
-        <RightScrollButton onClick={nextBtnClickHandler}>
+        <RightScrollButton>
           <ArrowIcon>&rang;</ArrowIcon>
         </RightScrollButton>
-        <Carousel ref={scrollRef}>
+        <Carousel>
           {data4.map((el) => (
             <Card key={el.id} src={el.image} alt={el.name} />
           ))}
@@ -832,18 +957,14 @@ export default function Slider() {
       <Container5>
         <Title>
           <TitleText>오늘 대한민국의 TOP 10 시리즈</TitleText>
-          <ViewAll>
-            <ViewAllArrow>&gt;</ViewAllArrow>
-            <ViewAllText>모두 보기</ViewAllText>
-          </ViewAll>
         </Title>
-        <LeftScrollButton onClick={prevBtnClickHandler}>
+        <LeftScrollButton>
           <ArrowIcon>&lang;</ArrowIcon>
         </LeftScrollButton>
-        <RightScrollButton onClick={nextBtnClickHandler}>
+        <RightScrollButton>
           <ArrowIcon>&rang;</ArrowIcon>
         </RightScrollButton>
-        <Carousel ref={scrollRef}>
+        <Top10Carousel>
           {data5.map((el) => (
             <Top10Card
               key={el.id}
@@ -852,77 +973,11 @@ export default function Slider() {
               alt={el.name}
             />
           ))}
-        </Carousel>
+        </Top10Carousel>
       </Container5>
     </NextflixContainer>
   );
 }
-
-const NextflixContainer = styled.div`
-  overflow: hidden;
-`;
-
-const Container1 = styled.div`
-  margin: 3vw 0;
-  position: relative;
-`;
-
-const Container2 = styled.div`
-  margin: 3vw 0;
-  position: relative;
-`;
-
-const Container3 = styled.div`
-  margin: 3vw 0;
-  position: relative;
-`;
-
-const Container4 = styled.div`
-  margin: 3vw 0;
-  position: relative;
-`;
-
-const Container5 = styled.div`
-  margin: 3vw 0;
-  position: relative;
-`;
-
-const Title = styled.div`
-  display: flex;
-  line-height: 1.3;
-  margin-bottom: 0.25rem;
-`;
-
-const ViewAll = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Carousel = styled.div`
-  height: 100%;
-  display: flex;
-`;
-
-const ViewAllArrow = styled.span`
-  background-color: none;
-  cursor: pointer;
-  opacity: 0;
-  font-size: 13px;
-  font-weight: bolder;
-  padding-bottom: 3px;
-`;
-
-const ViewAllText = styled.h2`
-  font-size: 12px;
-  background-color: none;
-  cursor: pointer;
-  opacity: 0;
-`;
-
-const TitleText = styled.h2`
-  font-size: 14px;
-  margin-left: 2px;
-`;
 
 const ArrowIcon = styled.div`
   display: flex;
@@ -934,7 +989,7 @@ const ArrowIcon = styled.div`
   width: 60px;
   height: 50px;
   cursor: pointer;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.1s;
 
   &:hover {
@@ -944,6 +999,7 @@ const ArrowIcon = styled.div`
 `;
 
 const LeftScrollButton = styled.div`
+  z-index: 3;
   left: 0;
   border: none;
   width: 50px;
@@ -962,10 +1018,11 @@ const LeftScrollButton = styled.div`
 `;
 
 const RightScrollButton = styled.div`
+  z-index: 3;
   right: 0;
   border: none;
-  width: 70px;
-  height: 130px;
+  width: 80px;
+  height: 150px;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -977,4 +1034,67 @@ const RightScrollButton = styled.div`
     transition: all ease-in 0.2s;
     opacity: 1;
   }
+`;
+
+const NextflixContainer = styled.div`
+  overflow: hidden;
+  background-color: black;
+`;
+
+const Container1 = styled.div`
+  overflow-y: hidden;
+  margin: 3vw 0;
+  position: relative;
+`;
+
+const Container2 = styled.div`
+  overflow-y: hidden;
+  margin: 3vw 0;
+  position: relative;
+`;
+
+const Container3 = styled.div`
+  margin: 3vw 0;
+  position: relative;
+`;
+
+const Container4 = styled.div`
+  margin: 3vw 0;
+  position: relative;
+`;
+//여기
+const Container5 = styled.div`
+  margin: 3vw 0;
+  position: relative;
+`;
+
+const Title = styled.div`
+  display: flex;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+`;
+
+//여기
+const Top10Carousel = styled.div`
+  margin-right: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Carousel = styled.div`
+  overflow-x: scroll;
+  height: 100%;
+  display: flex;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const TitleText = styled.h2`
+  color: white;
+  font-size: 14px;
+  margin-left: 2px;
 `;
