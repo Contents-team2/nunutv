@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   position: fixed;
+  top: 0%;
   border-radius: 1rem;
   margin-top: 2rem;
   width: 56.08%;
